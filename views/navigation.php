@@ -9,6 +9,10 @@
             <a href="/login.php">Login</a>
         </li>
 
+        <li>
+            <a href="/registration.php">Registration</a>
+        </li>
+
         <?php if (isset($_SESSION['user'])): ?>
             <li>
                 <a href="/profile.php">Profile</a>
