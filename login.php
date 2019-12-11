@@ -5,15 +5,15 @@
 
     <form action="app/users/login.php" method="post">
         <div class="login-form">
-            <label for="email">Email</label>
-            <input type="email" name="email" placeholder="your@email.com" required>
-            <small>Please enter your email adress.</small>
+            <label for="username">Username</label>
+            <input type="text" name="username" placeholder="Username" required>
+            <small>Please enter your username.</small>
         </div>
 
         <div class="login-form">
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="password" required>
-            <small>Please provide the your password (passphrase).</small>
+            <input type="password" name="password" placeholder="Password" required>
+            <small>Please enter your password.</small>
         </div>
 
         <button type="submit">Login</button>

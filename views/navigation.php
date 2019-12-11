@@ -5,6 +5,10 @@
         <a href="/index.php">Home</a>
         </li>
 
+        <li>
+        <a href="/about.php">About</a>
+        </li>
+
         <?php if (!isLoggedIn()): ?>
             <li>
                 <a href="/login.php">Login</a>
@@ -14,6 +18,12 @@
         <?php if (!isLoggedIn()): ?>
             <li>
                 <a href="/registration.php">Registration</a>
+            </li>
+        <?php endif; ?>
+
+        <?php if (isLoggedIn()): ?>
+            <li>
+                <a href="/feed.php">Feed</a>
             </li>
         <?php endif; ?>
 

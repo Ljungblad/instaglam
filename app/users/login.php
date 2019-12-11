@@ -4,36 +4,28 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_POST['email'], $_POST['password'])) {
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+//Checking if all variables are set
+if (isset($_POST['username'], $_POST['password'])) {
+    $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
     $password = $_POST['password'];
 
-    $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    // Collecting the username from the database
+    $user = getUserByUsername($username, $pdo);
 
-    if (!$statement) {
-        die(var_dump($pdo->errorInfo()));
-    }
-
-    $statement->bindParam(':email', $email, PDO::PARAM_STR);
-
-    $statement->execute();
-
-    $user = $statement->fetch(PDO::FETCH_ASSOC);
-
+    // Displays error message if the username does not exist
     if (!$user) {
-        $_SESSION['errors'] = 'This email does not exist.';
-
+        $_SESSION['error'] = 'This user does not exist.';
         redirect('/login.php');
     }
 
+    // Checking if the password is correct
     if (password_verify($password, $user['password'])) {
-
         unset($user['password']);
-
-        session_start();
         $_SESSION['user'] = $user;
-
-        redirect('/');
+        redirect('/profile.php');
+    } else {
+        $_SESSION['error'] = 'The password is not correct!';
+        redirect('/login.php');
     }
 }
 

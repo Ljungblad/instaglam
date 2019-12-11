@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-if (!function_exists('redirect')) {
+if (!function_exists('redirect'))
+{
     /**
      * Redirect the user to given path.
      *
      * @param string $path
-     *
      * @return void
      */
     function redirect(string $path)
@@ -22,18 +22,19 @@ if (!function_exists('redirect')) {
  *
  * @return boolean
  */
-function isLoggedIn() {
+function isLoggedIn()
+{
     return isset($_SESSION['user']);
 }
 
 /**
  * Displays errors
- * 
- * @param 
- * 
- * @return 
- * 
+ *
+ * @param
+ *
+ * @return
+ *
  */
 function displayError() {
-    
+
 }
