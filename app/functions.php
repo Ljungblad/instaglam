@@ -25,3 +25,15 @@ if (!function_exists('redirect')) {
 function isLoggedIn() {
     return isset($_SESSION['user']);
 }
+
+/**
+ * Displays errors
+ * 
+ * @param 
+ * 
+ * @return 
+ * 
+ */
+function displayError() {
+    
+}
