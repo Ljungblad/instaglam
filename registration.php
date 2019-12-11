@@ -5,9 +5,15 @@
 
     <form action="app/users/registration.php" method="post">
         <div class="registration-form">
-            <label for="name">Name</label>
-            <input type="name" name="name" required>
-            <small>Please enter your full name.</small>
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" required>
+            <small>Please enter your first name.</small>
+        </div>
+
+        <div class="registration-form">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" required>
+            <small>Please enter your last name.</small>
         </div>
 
         <div class="registration-form">
@@ -19,7 +25,13 @@
         <div class="registration-form">
             <label for="password">Password</label>
             <input type="password" name="password" placeholder="password" required>
-            <small>Please provide the your password (passphrase).</small>
+            <small>Please enter your password.</small>
+        </div>
+
+        <div class="registration-form">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="password_confirmation" placeholder="password" required>
+            <small>Confirm your password.</small>
         </div>
 
         <button type="submit">Register</button>

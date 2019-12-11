@@ -1,3 +1,15 @@
+<?php
+
+declare(strict_types=1);
+
+require_once __DIR__.'/app/autoload.php';
+
+if (!isLoggedIn()) {
+    redirect('/');
+}
+
+?>
+
 <?php require __DIR__.'/views/header.php'; ?>
 
 <article>

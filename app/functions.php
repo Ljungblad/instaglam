@@ -16,3 +16,12 @@ if (!function_exists('redirect')) {
         exit;
     }
 }
+
+/**
+ * Checks if the user is logged in
+ *
+ * @return boolean
+ */
+function isLoggedIn() {
+    return isset($_SESSION['user']);
+}

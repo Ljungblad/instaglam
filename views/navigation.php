@@ -5,21 +5,25 @@
         <a href="/index.php">Home</a>
         </li>
 
-        <li>
-            <a href="/login.php">Login</a>
-        </li>
+        <?php if (!isLoggedIn()): ?>
+            <li>
+                <a href="/login.php">Login</a>
+            </li>
+        <?php endif; ?>
 
-        <li>
-            <a href="/registration.php">Registration</a>
-        </li>
+        <?php if (!isLoggedIn()): ?>
+            <li>
+                <a href="/registration.php">Registration</a>
+            </li>
+        <?php endif; ?>
 
-        <?php if (isset($_SESSION['user'])): ?>
+        <?php if (isLoggedIn()): ?>
             <li>
                 <a href="/profile.php">Profile</a>
             </li>
         <?php endif; ?>
 
-        <?php if (isset($_SESSION['user'])): ?>
+        <?php if (isLoggedIn()): ?>
             <li>
                 <a href="/app/users/logout.php">Logout</a>
             </li>
