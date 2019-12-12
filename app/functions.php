@@ -30,11 +30,10 @@ function isLoggedIn()
 /**
  * Displays errors
  *
- * @param
- *
- * @return
- *
+ * @return void
  */
 function displayError() {
-
+        return isset($_SESSION['error']);
 }
+
+

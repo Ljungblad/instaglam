@@ -1,13 +1,6 @@
 <?php
-
-declare(strict_types=1);
-
 require_once __DIR__.'/app/autoload.php';
-
-if (!isLoggedIn()) {
-    redirect('/');
-}
-
+require __DIR__.'/views/loginWall.php';
 ?>
 
 <?php require __DIR__.'/views/header.php'; ?>
@@ -15,6 +8,7 @@ if (!isLoggedIn()) {
 <article>
     <h1>Profile</h1>
     <p>This is the profile page.</p>
+    <a href="/account.php"><p>Account settings</p></a>
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

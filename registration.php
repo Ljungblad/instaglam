@@ -3,6 +3,8 @@
 <article>
     <h1>Sign up</h1>
 
+    <?php require __DIR__.'/views/error.php'; ?>
+
     <form action="app/users/registration.php" method="post">
 
         <div class="registration-form">

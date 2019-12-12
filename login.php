@@ -3,6 +3,8 @@
 <article>
     <h1>Login</h1>
 
+    <?php require __DIR__.'/views/error.php'; ?>
+
     <form action="app/users/login.php" method="post">
         <div class="login-form">
             <label for="username">Username</label>
@@ -20,6 +22,7 @@
     </form>
 
     <a href="/registration.php"><p>Not registered yet?</p></a>
+
 </article>
 
 <?php require __DIR__.'/views/footer.php'; ?>
