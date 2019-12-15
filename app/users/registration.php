@@ -7,7 +7,7 @@ require __DIR__.'/../autoload.php';
 //Checking if all variables are set
 if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST['email'], $_POST['password'], $_POST['password_confirmation'])) {
 
-    // Checking if the password matches
+    // Checking if the passwords matches
     if ($_POST['password'] === $_POST['password_confirmation']) {
 
         // Checking if the email address is valid
@@ -64,7 +64,7 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
             redirect('/../../profile.php');
 
     } else {
-        // If the password does not match
+        // If the passwords does not match
         $_SESSION['error'] = "The two passwords do not match";
     }
     redirect('/../../registration.php');

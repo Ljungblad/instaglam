@@ -28,7 +28,7 @@ function isLoggedIn()
 }
 
 /**
- * Displays errors
+ * Displays error messages
  *
  * @return void
  */
@@ -36,4 +36,11 @@ function displayError() {
         return isset($_SESSION['error']);
 }
 
-
+/**
+ * Displays success messages
+ *
+ * @return void
+ */
+function displaySuccess() {
+        return isset($_SESSION['success']);
+}
