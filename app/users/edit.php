@@ -12,6 +12,7 @@ if (isset($_POST['edit_biography'])) {
     if (isset($_POST['biography'])) {
         $biography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
 
+        // Updates the information in the database
         $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
         if (!$statement) {
             die(var_dump($pdo->errorInfo()));
