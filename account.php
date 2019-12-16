@@ -2,8 +2,9 @@
 require_once __DIR__.'/app/autoload.php';
 require __DIR__.'/views/login-wall.php';
 
-$biography = $_SESSION['user']['biography'];
-$email = $_SESSION['user']['email'];
+// TODO: Add function that get user infromation from the database
+$user = getUserById($_SESSION['user']['id'], $pdo);
+
 ?>
 
 <?php require __DIR__.'/views/header.php'; ?>
@@ -16,11 +17,10 @@ $email = $_SESSION['user']['email'];
     <?php require __DIR__.'/views/success.php'; ?>
 
     <form action="app/users/edit.php" method="post">
-    <input type="hidden" name="id" value="<?php echo $_SESSION['user']['id']; ?>">
 
         <div class="account-form">
             <label for="biography">Biography</label>
-            <textarea type="text" name="biography" rows="8" cols="50"><?php echo $biography ?></textarea>
+            <textarea type="text" name="biography" rows="8" cols="50"><?php echo $user['biography'] ?></textarea>
 
         </div>
 
@@ -31,7 +31,7 @@ $email = $_SESSION['user']['email'];
 
         <div class="account-form">
             <label for="email">Current email</label>
-            <input type="email" name="email" value="<?php echo $email ?>" required>
+            <input type="email" name="email" value="<?php echo $user['email'] ?>" required>
             <small>Your current email.</small>
         </div>
 

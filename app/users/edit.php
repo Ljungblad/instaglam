@@ -3,20 +3,25 @@
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
+require __DIR__.'/../../views/login-wall.php';
+
+$id = $_SESSION['user']['id'];
 
 // Edits and updates the users biography information
 if (isset($_POST['edit_biography'])) {
     if (isset($_POST['biography'])) {
-        $id = (int) $_SESSION['user']['id'];
         $biography = filter_var($_POST['biography'], FILTER_SANITIZE_STRING);
 
-        $update = $pdo->prepare('UPDATE users SET = biography = :biography WHERE id = :id');
-        $update->execute([
+        $statement = $pdo->prepare('UPDATE users SET biography = :biography WHERE id = :id');
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+        $statement->execute([
             ':id' => $id,
             ':biography' => $biography,
             ]);
-            die(var_dump('UPDATED!'));
-
+            $_SESSION['success'] = 'Your biography were successfully updated';
+            redirect('/../../account.php');
     }
 }
 
@@ -55,8 +60,11 @@ if (isset($_POST['edit_email'])) {
         }
 
         // Connects with the database and update the new email address
-        $update = $pdo->prepare('UPDATE users SET email = :newEmail WHERE email = :email');
-        $update->execute([
+        $statement = $pdo->prepare('UPDATE users SET email = :newEmail WHERE email = :email');
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+        $statement->execute([
         ':newEmail' => $newEmail,
         ':email' => $email,
     ]);
@@ -66,29 +74,44 @@ if (isset($_POST['edit_email'])) {
 }
 
 // Edits and updates the users password
-if (isset($_POST['enter_password'])) {
+if (isset($_POST['edit_password'])) {
 
     // Checking if the variables are set
     if (isset($_POST['current_password'], $_POST['new_password'], $_POST['confirm_new_password'])) {
 
         // Ckecking if the passwords matches
-        if ($_POST['password'] === $_POST['password_confirmation']) {
+        if ($_POST['new_password'] === $_POST['confirm_new_password']) {
+            $currentPassword = $_POST['current_password'];
 
+            // Get the user
+            $user = getUserById($id, $pdo);
+
+            // Checking if the password is correct
+            if (password_verify($_POST['current_password'], $user['password'])) {
+                $newPassword = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+
+                // Connects with the database and update the password address
+                $statement = $pdo->prepare('UPDATE users SET password = :password WHERE id = :id');
+                if (!$statement) {
+                    die(var_dump($pdo->errorInfo()));
+                }
+                $statement->execute([
+                ':password' => $newPassword,
+                ':id' => $id,
+                ]);
+                $_SESSION['success'] = 'Your password were successfully updated';
+                unset($user['password']);
+                redirect('/../../account.php');
+            } else {
+                $_SESSION['error'] = 'Your current password is not correct!';
+                redirect('/../../account.php');
+            }
         } else {
             // If the passwords does not match
-        $_SESSION['error'] = "The two passwords do not match";
+            $_SESSION['error'] = "The two passwords do not match";
+            redirect('/../../account.php');
         }
     }
 }
 
-// Updates the information on the site when any of the forms are submitted?
-// $id = (int) $_SESSION['id'];
-// $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
-// $statement->execute(([
-//     ':id' => $id,
-// ]));
-// if (!$statement) {
-//     die(var_dump($pdo->errorInfo()));
-// }
-// $_SESSION['user'] = $statement->fetch(PDO::FETCH_ASSOC);
-redirect('/profile.php');
+redirect('/../../account.php');
