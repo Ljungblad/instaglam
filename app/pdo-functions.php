@@ -6,10 +6,10 @@ declare(strict_types=1);
  * Collects the username from the database
  *
  * @param string $username
- * @param object $pdo
+ * @param PDO $pdo
  * @return array
  */
-function getUserByUsername(string $username, object $pdo): array
+function getUserByUsername(string $username, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
@@ -18,19 +18,17 @@ function getUserByUsername(string $username, object $pdo): array
     if ($user) {
         return $user;
     }
-
     return $user = [];
-
 }
 
 /**
  * Collects the email from the database
  *
  * @param string $email
- * @param object $pdo
+ * @param PDO $pdo
  * @return array
  */
-function getUserByEmail(string $email, object $pdo): array
+function getUserByEmail(string $email, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -45,38 +43,14 @@ function getUserByEmail(string $email, object $pdo): array
 }
 
 
-// TODO: implement this function on the page
 /**
  * Collects the id from the database
  *
  * @param string $id
- * @param string $pdo
+ * @param PDO $pdo
  * @return array
  */
-// function getUserById(string $id, string $pdo = 'sqlite:app/database/database.db'): array
-// {
-//     $pdo = New PDO($pdo);
-//     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
-//     $statement->bindParam(':id', $id, PDO::PARAM_STR);
-//     $statement->execute();
-//     $user = $statement->fetch(PDO::FETCH_ASSOC);
-//     if ($user) {
-//         return $user;
-//     }
-//     return $user = [];
-
-// }
-
-
-// TODO: REMOVE THIS FUNCTION WHEN THE ONE ABSOVE WORKS
-/**
- * Undocumented function
- *
- * @param string $id
- * @param object $pdo
- * @return array
- */
-function getUserById(string $id, object $pdo): array
+function getUserById(string $id, PDO $pdo): array
 {
 
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
@@ -88,4 +62,21 @@ function getUserById(string $id, object $pdo): array
     }
     return $user = [];
 
+}
+
+/**
+ * Collects all posts from the database
+ *
+ * @param PDO $pdo
+ * @return array
+ */
+function getAllPosts(PDO $pdo): array
+{
+    $statement = $pdo->query('SELECT * FROM posts');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute();
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $posts;
 }

@@ -1,5 +1,5 @@
+<?php require __DIR__.'/views/header.php'; ?>
 <?php
-require_once __DIR__.'/app/autoload.php';
 require __DIR__.'/views/login-wall.php';
 
 // TODO: Add function that get user infromation from the database
@@ -7,7 +7,6 @@ $user = getUserById($_SESSION['user']['id'], $pdo);
 
 ?>
 
-<?php require __DIR__.'/views/header.php'; ?>
 
 <article>
     <h1>My Account Settings</h1>

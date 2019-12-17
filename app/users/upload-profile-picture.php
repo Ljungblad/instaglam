@@ -1,11 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 require __DIR__.'/../autoload.php';
-require __DIR__.'/../../views/login-wall.php';
+
+if (!isLoggedIn()) {
+    redirect('/');
+}
 
 if (isset($_FILES['profile_picture'])) {
     $file = $_FILES['profile_picture'];
     $id = $_SESSION['user']['id'];
+    $currentProfilePicture = $_SESSION['user']['profile_avatar'];
 
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
@@ -40,6 +46,12 @@ if (isset($_FILES['profile_picture'])) {
                     ':id' => $id,
                     ':profile_avatar' => $fileNameNew,
                     ]);
+
+
+                if ($currentProfilePicture !== NULL) {
+                    unlink(__DIR__."/../../uploads/".$currentProfilePicture);
+                }
+
                 $_SESSION['user']['profile_avatar'] = $fileNameNew;
                 $_SESSION['success'] = 'You have successfully uploaded your profile avatar!';
             } else {

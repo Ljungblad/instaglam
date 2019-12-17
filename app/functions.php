@@ -44,3 +44,4 @@ function displayError() {
 function displaySuccess() {
         return isset($_SESSION['success']);
 }
+

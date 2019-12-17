@@ -1,9 +1,6 @@
-<?php
-require_once __DIR__.'/app/autoload.php';
-require __DIR__.'/views/login-wall.php';
-?>
-
 <?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/login-wall.php'; ?>
+
 
 <article>
     <h1>Profile</h1>

@@ -3,7 +3,10 @@
 declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
-require __DIR__.'/../../views/login-wall.php';
+
+if (!isLoggedIn()) {
+    redirect('/');
+}
 
 $id = $_SESSION['user']['id'];
 
@@ -21,6 +24,7 @@ if (isset($_POST['edit_biography'])) {
             ':id' => $id,
             ':biography' => $biography,
             ]);
+            $_SESSION['user']['biography'] = $biography;
             $_SESSION['success'] = 'Your biography were successfully updated';
             redirect('/../../account.php');
     }
@@ -69,6 +73,7 @@ if (isset($_POST['edit_email'])) {
         ':newEmail' => $newEmail,
         ':email' => $email,
     ]);
+    $_SESSION['user']['email'] = $newEmail;
     $_SESSION['success'] = 'Your email were successfully updated';
     redirect('/../../account.php');
     }
