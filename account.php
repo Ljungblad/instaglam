@@ -1,6 +1,5 @@
 <?php require __DIR__.'/views/header.php'; ?>
-<?php
-require __DIR__.'/views/login-wall.php';
+<?php require __DIR__.'/views/login-wall.php';
 
 // TODO: Add function that get user infromation from the database
 $user = getUserById($_SESSION['user']['id'], $pdo);

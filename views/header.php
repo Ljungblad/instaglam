@@ -1,6 +1,4 @@
-<?php
-require_once __DIR__.'/../app/autoload.php';
-?>
+<?php require_once __DIR__.'/../app/autoload.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +7,8 @@ require_once __DIR__.'/../app/autoload.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title><?php echo $config['title']; ?></title>
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/profile.css">
+    <link rel="stylesheet" href="/assets/styles/feed.css">
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>

@@ -12,6 +12,9 @@ declare(strict_types=1);
 function getUserByUsername(string $username, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -31,15 +34,16 @@ function getUserByUsername(string $username, PDO $pdo): array
 function getUserByEmail(string $email, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE email = :email');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
     if ($user) {
         return $user;
     }
-
     return $user = [];
-
 }
 
 
@@ -52,8 +56,10 @@ function getUserByEmail(string $email, PDO $pdo): array
  */
 function getUserById(string $id, PDO $pdo): array
 {
-
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->execute();
     $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -61,7 +67,6 @@ function getUserById(string $id, PDO $pdo): array
         return $user;
     }
     return $user = [];
-
 }
 
 /**
@@ -72,7 +77,7 @@ function getUserById(string $id, PDO $pdo): array
  */
 function getAllPosts(PDO $pdo): array
 {
-    $statement = $pdo->query('SELECT * FROM posts');
+    $statement = $pdo->query('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
