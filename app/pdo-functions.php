@@ -85,3 +85,19 @@ function getAllPosts(PDO $pdo): array
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $posts;
 }
+
+
+function getPostById(string $postId, string $userId, PDO $pdo): array {
+    $statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users on posts.user_id = users.id WHERE id = :user_id AND post_id = :post_id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->bindParam(':user_id', $userId, PDO::PARAM_STR);
+    $statement->bindParam(':post_id', $postId, PDO::PARAM_STR);
+    $statement->execute();
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($post) {
+        return $post;
+    }
+    return $post = [];
+}

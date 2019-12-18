@@ -18,7 +18,7 @@
                 <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>">
                 <a href="#"><h3 class="post-username"><?php echo $post['username'] ?></h3></a>
                 <?php if (isOwnerOfPost($post['user_id'], $user['id'])): ?>
-                    <a href="/edit-post.php"><p class="link-edit-post">Edit</p></a>
+                    <a href="<?php echo '/edit-post.php?post='.$post['post_id']; ?>"><p class="link-edit-post">Edit</p></a>
                 <?php endif; ?>
             </div>
 
