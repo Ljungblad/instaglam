@@ -45,3 +45,13 @@ function displaySuccess() {
         return isset($_SESSION['success']);
 }
 
+/**
+ * Checking if the user is the owner of the post
+ *
+ * @param string $postUserId
+ * @param string $userId
+ * @return boolean
+ */
+function isOwnerOfPost(string $postUserId, string $userId):bool {
+    return $postUserId === $userId;
+}

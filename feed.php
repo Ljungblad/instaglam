@@ -1,5 +1,6 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php require __DIR__.'/views/login-wall.php'; ?>
+<?php $user = getUserById($_SESSION['user']['id'], $pdo); ?>
 
 <article>
     <h1>Feed</h1>
@@ -16,6 +17,9 @@
             <div class="post-creator">
                 <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>">
                 <a href="#"><h3 class="post-username"><?php echo $post['username'] ?></h3></a>
+                <?php if (isOwnerOfPost($post['user_id'], $user['id'])): ?>
+                    <a href="/edit-post.php"><p class="link-edit-post">Edit</p></a>
+                <?php endif; ?>
             </div>
 
             <div class="post-content">
