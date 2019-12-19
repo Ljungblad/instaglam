@@ -3,3 +3,30 @@
   margin: 0;
   padding: 0;
 }
+
+article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+article h1,
+p,
+a {
+  margin: 5px;
+}
+
+article form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.success-message {
+  color: green;
+}
+
+.error-message {
+  color: red;
+}

@@ -30,7 +30,7 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
         if ($imageError === 0) {
 
             // Checking if the uploaded file has the right file size
-            if ($imageSize < 300000) {
+            if ($imageSize < 3145728) {
 
                 $imageNameNew = time().".".$id.".".$imageActualExt;
                 $imageDestination = '/../../uploads/'.$imageNameNew;

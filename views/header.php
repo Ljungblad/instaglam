@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/styles/main.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/feed.css">
+    <link rel="stylesheet" href="/assets/styles/edit-post.css">
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>

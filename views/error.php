@@ -1,4 +1,4 @@
 <?php if (displayError()): ?>
-        <p><?php echo $_SESSION['error']; ?></p>
+        <p class="error-message"><?php echo $_SESSION['error']; ?></p>
         <?php unset($_SESSION["error"]); ?>
 <?php endif; ?>

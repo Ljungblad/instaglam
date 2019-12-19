@@ -77,7 +77,7 @@ function getUserById(string $id, PDO $pdo): array
  */
 function getAllPosts(PDO $pdo): array
 {
-    $statement = $pdo->query('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id');
+    $statement = $pdo->query('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY date_created DESC');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }

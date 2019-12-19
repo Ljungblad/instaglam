@@ -12,16 +12,13 @@ if (isset($_FILES['profile_picture'])) {
     $file = $_FILES['profile_picture'];
     $id = $_SESSION['user']['id'];
     $currentProfilePicture = $_SESSION['user']['profile_avatar'];
-
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
     $fileSize = $file['size'];
     $fileError = $file['error'];
     $fileType = $file['type'];
-
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
-
     $allowed = ['jpg', 'jpeg', 'png'];
 
     // Checking if the uploaded file has the right format
@@ -31,7 +28,7 @@ if (isset($_FILES['profile_picture'])) {
         if ($fileError === 0) {
 
             // Checking if the uploaded file has the right file size
-            if ($fileSize < 300000) {
+            if ($fileSize < 3145728) {
 
                 $fileNameNew = time().".".$id.".".$fileActualExt;
                 $fileDestination = '/../../uploads/'.$fileNameNew;
@@ -52,7 +49,7 @@ if (isset($_FILES['profile_picture'])) {
                     unlink(__DIR__."/../../uploads/".$currentProfilePicture);
                 }
 
-                $_SESSION['user']['profile_avatar'] = $fileNameNew;
+                // $_SESSION['user']['profile_avatar'] = $fileNameNew;
                 $_SESSION['success'] = 'You have successfully uploaded your profile avatar!';
             } else {
                 $_SESSION['error'] = 'Your file was too big!';

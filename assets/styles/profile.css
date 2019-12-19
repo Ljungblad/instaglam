@@ -12,25 +12,6 @@
   justify-content: space-between;
 }
 
-article {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-article h1,
-p,
-a {
-  margin: 5px;
-}
-
-article form {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 .image-form {
   margin: 20px;
 }

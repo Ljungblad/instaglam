@@ -37,18 +37,14 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
                 redirect('/../../registration.php');
             }
 
-
             // Inserts all the form data to the database
             $statement = $pdo->query('SELECT * FROM users');
             $users = $statement->fetchAll(PDO::FETCH_ASSOC);
             $query = 'INSERT INTO users (username, first_name, last_name, email, password) VALUES (:username, :first_name, :last_name, :email, :password)';
             $statement = $pdo->prepare($query);
-
-            // REMOVE THIS IF STATEMENT LATER!!!!!!
             if (!$statement) {
                 die(var_dump($pdo->errorInfo()));
             }
-
             $statement->bindParam(':username', $username, PDO::PARAM_STR);
             $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
             $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
