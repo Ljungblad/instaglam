@@ -86,7 +86,14 @@ function getAllPosts(PDO $pdo): array
     return $posts;
 }
 
-
+/**
+ * Collects all posts from a specific user and all their user-information
+ *
+ * @param string $postId
+ * @param string $userId
+ * @param PDO $pdo
+ * @return array
+ */
 function getPostById(string $postId, string $userId, PDO $pdo): array {
     $statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users on posts.user_id = users.id WHERE id = :user_id AND post_id = :post_id');
     if (!$statement) {
@@ -100,4 +107,19 @@ function getPostById(string $postId, string $userId, PDO $pdo): array {
         return $post;
     }
     return $post = [];
+}
+
+
+function getImageNameById(int $userId, int $postId, $pdo): array
+{
+    $statement = $pdo->prepare('SELECT image FROM posts WHERE user_id = :user_id AND post_id = :post_id');
+                if (!$statement) {
+                    die(var_dump($pdo->errorInfo()));
+                }
+                $statement->execute([
+                    ':user_id' => $userId,
+                    ':post_id' => $postId,
+                    ]);
+                $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
+                return $currentPostImage;
 }

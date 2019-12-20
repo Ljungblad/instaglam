@@ -12,7 +12,7 @@ if (!isLoggedIn()) {
 
 if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     $image = $_FILES['edit_post_image'];
-    $userId = $_SESSION['user']['id'];
+    $userId = (int) $_SESSION['user']['id'];
     $postId = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
     $imageName = $image['name'];
     $imageTmpName = $image['tmp_name'];
@@ -37,15 +37,7 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
                 move_uploaded_file($imageTmpName, __DIR__.$imageDestination);
 
                 // Get the name of the current post image
-                $statement = $pdo->prepare('SELECT image FROM posts WHERE user_id = :user_id AND post_id = :post_id');
-                if (!$statement) {
-                    die(var_dump($pdo->errorInfo()));
-                }
-                $statement->execute([
-                    ':user_id' => $userId,
-                    ':post_id' => $postId,
-                    ]);
-                $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
+                $currentPostImage = getImageNameById($userId, $postId, $pdo);
 
                 // Updates the image in the database
                 $statement = $pdo->prepare('UPDATE posts SET image = :image WHERE post_id = :post_id AND user_id = :user_id');
@@ -62,7 +54,7 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
                 if ($currentPostImage['image'] !== NULL) {
                     unlink(__DIR__."/../../uploads/".$currentPostImage['image']);
                 }
-                $_SESSION['success'] = 'You have successfully updated your image!';
+                $_SESSION['success'] = 'Your post was successfully updated!';
             } else {
                 $_SESSION['error'] = 'Your image is too big!';
             }
@@ -89,6 +81,6 @@ if (isset($_GET['post_id'], $_POST['edit_post_content'])) {
         ':user_id' => $userId,
         ':content' => $contet,
         ]);
-    $_SESSION['success'] = 'Your content were successfully updated';
+    $_SESSION['success'] = 'Your post was successfully updated';
 }
 redirect('/../../edit-post.php?post_id='.$postId);

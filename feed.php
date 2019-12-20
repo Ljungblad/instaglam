@@ -5,6 +5,8 @@
 <article>
     <h1>Feed</h1>
     <p>This is the feed page.</p>
+    <?php require __DIR__.'/views/error.php'; ?>
+    <?php require __DIR__.'/views/success.php'; ?>
     <a href="/create-post.php"><p>Create New Post</p></a>
 </article>
 

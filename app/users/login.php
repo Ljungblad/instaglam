@@ -15,7 +15,6 @@ if (isset($_POST['username'], $_POST['password'])) {
     // Displays error message if the username does not exist
     if (!$user) {
         $_SESSION['error'] = 'This user does not exist.';
-        redirect('/login.php');
     }
 
     // Checking if the password is correct
@@ -25,8 +24,6 @@ if (isset($_POST['username'], $_POST['password'])) {
         redirect('/profile.php');
     } else {
         $_SESSION['error'] = 'The password is not correct!';
-        redirect('/login.php');
     }
 }
-
-redirect('/');
+redirect('/login.php');
