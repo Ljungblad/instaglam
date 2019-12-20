@@ -50,11 +50,11 @@ function getUserByEmail(string $email, PDO $pdo): array
 /**
  * Collects the id from the database
  *
- * @param string $id
+ * @param int $id
  * @param PDO $pdo
  * @return array
  */
-function getUserById(string $id, PDO $pdo): array
+function getUserById(int $id, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
     if (!$statement) {
@@ -89,12 +89,12 @@ function getAllPosts(PDO $pdo): array
 /**
  * Collects all posts from a specific user and all their user-information
  *
- * @param string $postId
- * @param string $userId
+ * @param int $postId
+ * @param int $userId
  * @param PDO $pdo
  * @return array
  */
-function getPostById(string $postId, string $userId, PDO $pdo): array {
+function getPostById(int $postId, int $userId, PDO $pdo): array {
     $statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users on posts.user_id = users.id WHERE id = :user_id AND post_id = :post_id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -109,7 +109,14 @@ function getPostById(string $postId, string $userId, PDO $pdo): array {
     return $post = [];
 }
 
-
+/**
+ * Collect the name of the post image
+ *
+ * @param integer $userId
+ * @param integer $postId
+ * @param [type] $pdo
+ * @return array
+ */
 function getImageNameById(int $userId, int $postId, $pdo): array
 {
     $statement = $pdo->prepare('SELECT image FROM posts WHERE user_id = :user_id AND post_id = :post_id');

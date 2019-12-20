@@ -10,10 +10,12 @@ if (!isLoggedIn()) {
 
 //TODO: ADD FUNCTION THAT CHECKS THE OWNER OF THE POST WITH THE ID
 
+// Checking if the post id and post image is set
 if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     $image = $_FILES['edit_post_image'];
     $userId = (int) $_SESSION['user']['id'];
     $postId = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
+
     $imageName = $image['name'];
     $imageTmpName = $image['tmp_name'];
     $imageSize = $image['size'];
@@ -66,6 +68,7 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     }
 }
 
+// Checking if the post id and the post content is set
 if (isset($_GET['post_id'], $_POST['edit_post_content'])) {
     $postId = (int) filter_var($_GET['post_id'], FILTER_SANITIZE_NUMBER_INT);
     $userId = $_SESSION['user']['id'];

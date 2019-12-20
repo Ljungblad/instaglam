@@ -10,8 +10,9 @@ if (!isLoggedIn()) {
 
 if (isset($_FILES['profile_picture'])) {
     $file = $_FILES['profile_picture'];
-    $id = $_SESSION['user']['id'];
+    $id = (int) $_SESSION['user']['id'];
     $currentProfilePicture = $_SESSION['user']['profile_avatar'];
+
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
     $fileSize = $file['size'];
@@ -44,7 +45,6 @@ if (isset($_FILES['profile_picture'])) {
                     ':profile_avatar' => $fileNameNew,
                     ]);
 
-
                 if ($currentProfilePicture !== NULL) {
                     unlink(__DIR__."/../../uploads/".$currentProfilePicture);
                 }
@@ -57,7 +57,6 @@ if (isset($_FILES['profile_picture'])) {
         } else {
             $_SESSION['error'] = 'There was an error uploading your file!';
         }
-
     } else {
         $_SESSION['error'] = 'You cannot upload this type of file!';
     }

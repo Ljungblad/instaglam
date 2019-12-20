@@ -8,7 +8,7 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
-$id = $_SESSION['user']['id'];
+$id = (int) $_SESSION['user']['id'];
 
 // Edits and updates the users biography information
 if (isset($_POST['edit_biography'])) {

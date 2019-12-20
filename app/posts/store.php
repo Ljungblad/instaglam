@@ -8,10 +8,11 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
+// Checking if the image and content is set
 if (isset($_FILES['post_image'], $_POST['post_content'])) {
     $content = filter_var($_POST['post_content'], FILTER_SANITIZE_STRING);
     $image = $_FILES['post_image'];
-    $id = $_SESSION['user']['id'];
+    $id = (int) $_SESSION['user']['id'];
 
     $imageName = $image['name'];
     $imageTmpName = $image['tmp_name'];
@@ -47,6 +48,7 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
                     ':image' => $imageNameNew,
                     ':date_created' => $date,
                     ]);
+                $_SESSION['success'] = 'Your post was successfully uploaded';
                 redirect('/../../feed.php');
             } else {
                 $_SESSION['error'] = 'Your file was too big!';
