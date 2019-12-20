@@ -1,8 +1,8 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php require __DIR__.'/views/login-wall.php'; ?>
 <?php
-$user = getUserById($_SESSION['user']['id'], $pdo);
-$post = getPostById($_GET['post_id'], $user['id'], $pdo);
+    $user = getUserById($_SESSION['user']['id'], $pdo);
+    $post = getPostById($_GET['post_id'], $user['id'], $pdo);
 ?>
 
 
