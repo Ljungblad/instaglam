@@ -114,19 +114,39 @@ function getPostById(int $postId, int $userId, PDO $pdo): array {
  *
  * @param integer $userId
  * @param integer $postId
- * @param [type] $pdo
+ * @param PDO $pdo
  * @return array
  */
-function getImageNameById(int $userId, int $postId, $pdo): array
+function getImageNameById(int $userId, int $postId, PDO $pdo): array
 {
     $statement = $pdo->prepare('SELECT image FROM posts WHERE user_id = :user_id AND post_id = :post_id');
-                if (!$statement) {
-                    die(var_dump($pdo->errorInfo()));
-                }
-                $statement->execute([
-                    ':user_id' => $userId,
-                    ':post_id' => $postId,
-                    ]);
-                $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
-                return $currentPostImage;
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':user_id' => $userId,
+        ':post_id' => $postId,
+        ]);
+    $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
+    return $currentPostImage;
+}
+
+/**
+ * Counts the numbers of likes on a post
+ *
+ * @param integer $postId
+ * @param PDO $pdo
+ * @return integer
+ */
+function countLikes(int $postId, PDO $pdo): int
+{
+    $statement = $pdo->prepare('SELECT COUNT(*) FROM likes WHERE post_id = :post_id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':post_id' => $postId,
+        ]);
+    $likes = $statement->fetch(PDO::FETCH_ASSOC);
+    return (int)$likes['COUNT(*)'];
 }

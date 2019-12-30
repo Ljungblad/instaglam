@@ -49,7 +49,7 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
             $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
             $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
             $statement->bindParam(':email', $email, PDO::PARAM_STR);
-            $statement->bindParam(':password', $hash_password, PDO::PARAM_STR);
+            $statement->bindParam(':password', $password, PDO::PARAM_STR);
             $statement->execute();
 
             // Get the user from the database and starts a new session for the user
