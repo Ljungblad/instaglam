@@ -9,7 +9,6 @@ likeForms.forEach(likeForm =>
   likeForm.addEventListener("submit", event => {
     event.preventDefault();
 
-    console.log(likeForm);
     const formData = new FormData(likeForm);
 
     fetch("/../../app/posts/like.php", {
@@ -20,7 +19,6 @@ likeForms.forEach(likeForm =>
       .then(json => {
         // Make something happen here to show that the post is liked!
       });
-
     // this will now make the form red
     event.currentTarget.classList.add("liked");
   })

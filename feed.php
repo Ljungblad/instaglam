@@ -37,7 +37,7 @@
 
             <div class="post-likes">
                 <form method="post" class="post-like-form">
-                    <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                    <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
                     <button class="like-btn" type="submit">Like</button>
                 </form>
             </div>
