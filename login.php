@@ -8,20 +8,21 @@
     <form action="app/users/login.php" method="post">
         <div class="login-form">
             <label for="username">Username</label>
-            <input type="text" name="username" placeholder="Username" required>
-            <small>Please enter your username.</small>
+            <input type="text" name="username" placeholder="Enter your username" required>
         </div>
 
         <div class="login-form">
             <label for="password">Password</label>
-            <input type="password" name="password" placeholder="Password" required>
-            <small>Please enter your password.</small>
+            <input type="password" name="password" placeholder="Enter your password" required>
         </div>
 
-        <button type="submit">Login</button>
+        <button class="login-btn" type="submit">Login</button>
     </form>
 
-    <a href="/registration.php"><p>Not registered yet?</p></a>
+    <div class="sign-up-container">
+        <p>Not registered yet?</p>
+        <a href="/registration.php"><p class="sign-up-link">SIGN UP</p></a>
+    </div>
 
 </article>
 

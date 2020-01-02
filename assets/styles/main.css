@@ -4,6 +4,15 @@
   padding: 0;
 }
 
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
 article {
   display: flex;
   justify-content: center;
@@ -23,10 +32,34 @@ article form {
   flex-direction: column;
 }
 
+::-webkit-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
+:-moz-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
+::-moz-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
+:-ms-input-placeholder {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+}
+
 .success-message {
   color: green;
 }
 
 .error-message {
   color: red;
+}
+
+a {
+  color: blue;
 }
