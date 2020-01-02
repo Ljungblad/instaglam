@@ -1,14 +1,14 @@
-.login-form {
+.registration-form {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
-.login-form label {
+.registration-form label {
   margin-left: 6px;
 }
 
-.login-form input {
+.registration-form input {
   height: 36px;
   width: 80vw;
   border: 1px solid #d4d4d4;
@@ -16,7 +16,7 @@
   padding-left: 10px;
 }
 
-.login-btn {
+.sign-up-btn {
   height: 36px;
   width: 80vw;
   border: none;
@@ -25,17 +25,18 @@
   font-size: 14px;
 }
 
-.sign-up-container {
+.login-link-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin: 20px;
 }
 
-.sign-up-container a {
+.login-link-container a,
+p {
   text-decoration: none;
+  margin: 2px;
 }
 
-.sign-up-link {
+.login-link {
   font-weight: 800;
 }

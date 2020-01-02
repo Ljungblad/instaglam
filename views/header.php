@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/styles/feed.css">
     <link rel="stylesheet" href="/assets/styles/edit-post.css">
     <link rel="stylesheet" href="/assets/styles/login.css">
+    <link rel="stylesheet" href="/assets/styles/registration.css">
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>
