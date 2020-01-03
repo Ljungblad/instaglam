@@ -9,7 +9,8 @@
   width: 95%;
   height: 1px;
   border-bottom: 1px solid black;
-  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .account-form-content {
@@ -18,7 +19,12 @@
   margin-bottom: 10px;
 }
 
-.account-form label {
+.biography-label {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.account-label {
   margin-left: 6px;
 }
 

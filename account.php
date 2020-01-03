@@ -4,7 +4,6 @@
 
 <article>
     <h1>My Account Settings</h1>
-    <p>Edit your profile picture and account information.</p>
 
     <?php require __DIR__.'/views/error.php'; ?>
     <?php require __DIR__.'/views/success.php'; ?>
@@ -21,7 +20,7 @@
     <form class="account-form" action="app/users/edit.php" method="post">
 
         <div class="account-form-content">
-            <label for="biography">Biography</label>
+            <label class="biography-label" for="biography">Update your biography</label>
             <textarea type="text" name="biography"><?php echo $user['biography'] ?></textarea>
         </div>
 
@@ -31,13 +30,13 @@
     <form class="account-form" action="app/users/edit.php" method="post">
 
         <div class="account-form-content">
-            <label for="email">Current email</label>
+            <label class="account-label" for="email">Current email</label>
             <input class="account-input" type="email" name="email" value="<?php echo $user['email'] ?>" required>
         </div>
 
         <div class="account-form-content">
-            <label for="new_email">Enter new email</label>
-            <input class="account-input" type="email" name="new_email" placeholder="New email" required?>
+            <label class="account-label" for="new_email">New email</label>
+            <input class="account-input" type="email" name="new_email" placeholder="Enter your new email" required?>
         </div>
 
         <button class="account-btn" type="submit" name="edit_email">Change email</button>
@@ -46,17 +45,17 @@
     <form class="account-form" action="app/users/edit.php" method="post">
 
         <div class="account-form-content">
-            <label for="current_password">Current password</label>
+            <label class="account-label" for="current_password">Current password</label>
             <input class="account-input" type="password" name="current_password" placeholder="Enter your current pasword" required>
         </div>
 
         <div class="account-form-content">
-            <label for="new_password">New password</label>
+            <label class="account-label" for="new_password">New password</label>
             <input class="account-input" type="password" name="new_password" placeholder="Enter your new password" required>
         </div>
 
         <div class="account-form-content">
-            <label for="confirm_new_password">Confirm new password</label>
+            <label class="account-label" for="confirm_new_password">Confirm new password</label>
             <input class="account-input" type="password" name="confirm_new_password" placeholder="Confirm your new password" required>
         </div>
 

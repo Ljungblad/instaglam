@@ -1,14 +1,12 @@
 .feed-post-article {
-  width: 90%;
-  margin: 20px;
-  border: 2px solid black;
+  width: 100%;
+  margin-top: 20px;
   border-radius: 5px;
 }
 
 .post-creator {
   display: flex;
   align-items: center;
-  align-self: flex-start;
   padding: 8px;
 }
 
@@ -28,13 +26,17 @@
   color: royalblue;
 }
 
+.link-edit-post {
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
 .post-content {
   width: 100%;
 }
 
 .post-content img {
   width: 100%;
-  object-fit: contain;
 }
 
 .post-content p {
@@ -46,6 +48,10 @@
   height: 25px;
   border: 1px solid black;
   border-radius: 5px;
+}
+
+.post-likes {
+  display: flex;
 }
 
 .liked {

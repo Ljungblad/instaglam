@@ -28,12 +28,12 @@
 
             <div class="post-content">
                 <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
+                <div class="like-count">
+                    <p><?php echo $likes; ?> likes</p>
+                </div>
                 <p><?php echo $post['content']; ?></p>
             </div>
 
-            <div class="like-count">
-                <p><?php echo $likes; ?> likes</p>
-            </div>
 
             <div class="post-likes">
                 <form method="post" class="post-like-form">
