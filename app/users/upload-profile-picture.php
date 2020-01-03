@@ -61,4 +61,4 @@ if (isset($_FILES['profile_picture'])) {
         $_SESSION['error'] = 'You cannot upload this type of file!';
     }
 }
-redirect('/../../profile.php');
+redirect('/../../account.php');

@@ -3,25 +3,17 @@
 <?php $user = getUserById($_SESSION['user']['id'], $pdo) ?>
 
 <div class="profile-wrapper">
-    <article>
-        <h1>Profile</h1>
-        <p>This is the profile page.</p>
+    <article class="profile-top-section">
         <div class="profile-picture">
-        <img src="<?php echo "/uploads/".$user['profile_avatar'] ?>" alt="" width="400">
+            <img src="<?php echo "/uploads/".$user['profile_avatar'] ?>" alt="profile picture" width="400">
+        </div>
+        <div class="number-of-posts">
+            <p>3</p>
+            <p>Posts</p>
         </div>
     </article>
 
-    <article class="image-form">
-
-        <?php require __DIR__.'/views/error.php'; ?>
-        <?php require __DIR__.'/views/success.php'; ?>
-
-        <form action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
-            <label for="profile_picture">Edit your profile picture</label>
-            <input type="file" name="profile_picture">
-            <button type="submit">Upload profile picture</button>
-        </form>
-    </article>
+    <h1 class="profile-username"><?php echo $user['username'] ?></h1>
 
     <article>
             <h3>Biography</h3>

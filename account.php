@@ -4,59 +4,63 @@
 
 <article>
     <h1>My Account Settings</h1>
-    <p>Edit your profile.</p>
+    <p>Edit your profile picture and account information.</p>
 
     <?php require __DIR__.'/views/error.php'; ?>
     <?php require __DIR__.'/views/success.php'; ?>
 
-    <form action="app/users/edit.php" method="post">
+    <form class="account-form" action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
+        <label for="profile_picture">Edit your profile picture</label>
+        <div class="upload-btn-wrapper">
+            <button class="upload-btn"><i class="fas fa-folder-open"></i>Select a file</button>
+            <input type="file" name="profile_picture">
+        </div>
+        <button class="account-btn" type="submit">Upload profile picture</button>
+    </form>
 
-        <div class="account-form">
+    <form class="account-form" action="app/users/edit.php" method="post">
+
+        <div class="account-form-content">
             <label for="biography">Biography</label>
-            <textarea type="text" name="biography" rows="8" cols="50"><?php echo $user['biography'] ?></textarea>
-
+            <textarea type="text" name="biography"><?php echo $user['biography'] ?></textarea>
         </div>
 
-        <button type="submit" name="edit_biography">Update</button>
+        <button class="account-btn" type="submit" name="edit_biography">Update biography</button>
     </form>
 
-    <form action="app/users/edit.php" method="post">
+    <form class="account-form" action="app/users/edit.php" method="post">
 
-        <div class="account-form">
+        <div class="account-form-content">
             <label for="email">Current email</label>
-            <input type="email" name="email" value="<?php echo $user['email'] ?>" required>
-            <small>Your current email.</small>
+            <input class="account-input" type="email" name="email" value="<?php echo $user['email'] ?>" required>
         </div>
 
-        <div class="account-form">
+        <div class="account-form-content">
             <label for="new_email">Enter new email</label>
-            <input type="email" name="new_email" placeholder="New email" required?>
-            <small>Please enter your new email.</small>
+            <input class="account-input" type="email" name="new_email" placeholder="New email" required?>
         </div>
 
-        <button type="submit" name="edit_email">Update</button>
+        <button class="account-btn" type="submit" name="edit_email">Change email</button>
     </form>
 
-    <form action="app/users/edit.php" method="post">
+    <form class="account-form" action="app/users/edit.php" method="post">
 
-        <div class="account-form">
+        <div class="account-form-content">
             <label for="current_password">Current password</label>
-            <input type="password" name="current_password" placeholder="Current pasword" required>
-            <small>Please submit your current password.</small>
+            <input class="account-input" type="password" name="current_password" placeholder="Enter your current pasword" required>
         </div>
 
-        <div class="account-form">
+        <div class="account-form-content">
             <label for="new_password">New password</label>
-            <input type="password" name="new_password" placeholder="New password" required>
-            <small>Please submit your new password.</small>
+            <input class="account-input" type="password" name="new_password" placeholder="Enter your new password" required>
         </div>
 
-        <div class="account-form">
+        <div class="account-form-content">
             <label for="confirm_new_password">Confirm new password</label>
-            <input type="password" name="confirm_new_password" placeholder="Confirm new password" required>
+            <input class="account-input" type="password" name="confirm_new_password" placeholder="Confirm your new password" required>
         </div>
 
-        <button type="submit" name="edit_password">Update</button>
+        <button class="account-btn" type="submit" name="edit_password">Change password</button>
     </form>
 
 </article>

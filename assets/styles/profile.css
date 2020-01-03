@@ -4,10 +4,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
-}
-
-.image-form {
-  margin: 20px;
+  border: 2px solid black;
 }
 
 .image-form label,
@@ -16,9 +13,16 @@ button {
   margin: 5px;
 }
 
+.profile-top-section {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .profile-picture {
   width: 100px;
   height: 100px;
+  margin: 5px;
 }
 
 .profile-picture img {
@@ -26,4 +30,14 @@ button {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.number-of-posts {
+  align-self: center;
+  text-align: center;
+}
+
+.profile-username {
+  align-self: flex-start;
+  margin: 5px;
 }
