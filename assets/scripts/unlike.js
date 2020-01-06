@@ -1,13 +1,15 @@
 "use strict";
 
 const unlikeForms = document.querySelectorAll(".post-unlike-form");
-const unlikeBtns = document.querySelectorAll(".unlike-btn");
+const likeBtn = `<form method="post" class="post-like-form">
+                  <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                  <button class="like-btn" type="submit">Like</button>
+                  </form>`;
 
-// Adds a like to a post
+// Removes a like from a post
 
 unlikeForms.forEach(unlikeForm =>
   unlikeForm.addEventListener("submit", event => {
-    console.log("pushed!");
     event.preventDefault();
 
     const formData = new FormData(unlikeForm);
@@ -17,10 +19,15 @@ unlikeForms.forEach(unlikeForm =>
       body: formData
     })
       .then(response => response.json())
-      .then(json => {
+      .then(numberOfLikes => {
         // Make something happen here to show that the post is liked!
+        const likeCounter = document.querySelector(
+          `.like-count${unlikeForm[0].value}`
+        );
+        likeCounter.innerHTML = numberOfLikes;
+        likeCounter.innerHTML += " likes";
       });
-    // this will now make the form red
-    event.currentTarget.classList.add("liked");
+    const btnContainer = event.currentTarget.parentElement;
+    btnContainer.innerHTML = likeBtn;
   })
 );

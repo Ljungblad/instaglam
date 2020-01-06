@@ -26,8 +26,8 @@
 
             <div class="post-content">
                 <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
-                <div class="like-count">
-                    <p><?php echo $likes; ?> likes</p>
+                <div class="feed-likes" >
+                    <p class="like-count<?php echo $post['post_id'] ?>"><?php echo $likes; ?> likes</p>
                 </div>
                 <p><?php echo $post['content']; ?></p>
             </div>
@@ -51,4 +51,5 @@
 <?php endforeach; ?>
 
 <script src="assets/scripts/like.js"></script>
+<script src="assets/scripts/unlike.js"></script>
 <?php require __DIR__.'/views/footer.php'; ?>
