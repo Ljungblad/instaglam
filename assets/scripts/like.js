@@ -18,6 +18,9 @@ likeForms.forEach(likeForm =>
       .then(response => response.json())
       .then(json => {
         // Make something happen here to show that the post is liked!
+        const likes = document.querySelector(".like-count p");
+        likes.innerHTML = json;
+        likes.innerHTML += " likes";
       });
     // this will now make the form red
     event.currentTarget.classList.add("liked");

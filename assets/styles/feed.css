@@ -50,6 +50,13 @@
   border-radius: 5px;
 }
 
+.unlike-btn {
+  width: 60px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
 .post-likes {
   display: flex;
 }

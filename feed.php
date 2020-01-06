@@ -12,9 +12,7 @@
 
 <?php foreach (getAllPosts($pdo) as $post): ?>
 <?php $likes = countLikes($post['post_id'], $pdo); ?>
-
     <article class="feed-post-article">
-
         <div class="post-wrapper">
 
             <div class="post-creator">
@@ -34,18 +32,22 @@
                 <p><?php echo $post['content']; ?></p>
             </div>
 
-
             <div class="post-likes">
-                <form method="post" class="post-like-form">
-                    <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                    <button class="like-btn" type="submit">Like</button>
-                </form>
+                <?php if (!likedPost($user['id'], $post['post_id'], $pdo)): ?>
+                    <form method="post" class="post-like-form">
+                        <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                        <button class="like-btn" type="submit">Like</button>
+                    </form>
+                <?php else: ?>
+                    <form method="post" class="post-unlike-form">
+                        <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
+                        <button class="unlike-btn" type="submit">Unlike</button>
+                    </form>
+                <?php endif; ?>
             </div>
 
         </div>
-
     </article>
-
 <?php endforeach; ?>
 
 <script src="assets/scripts/like.js"></script>
