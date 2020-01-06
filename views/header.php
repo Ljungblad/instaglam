@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/707ad1ef49.js" crossorigin="anonymous"></script>
     <!-- CSS -->
     <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/navigation.css">
     <link rel="stylesheet" href="/assets/styles/profile.css">
     <link rel="stylesheet" href="/assets/styles/feed.css">
     <link rel="stylesheet" href="/assets/styles/edit-post.css">

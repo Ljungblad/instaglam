@@ -1,0 +1,16 @@
+nav {
+  border: 2px solid black;
+}
+
+.nav-ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.nav-img {
+  width: 40px;
+  padding: 5px;
+  margin-top: 5px;
+}
