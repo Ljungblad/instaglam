@@ -159,7 +159,7 @@ function countLikes(int $postId, PDO $pdo): int
  * @param PDO $pdo
  * @return boolean
  */
-function likedPost(int $userId, int $postId, PDO $pdo): bool
+function likedPost(int $userId, int $postId, PDO $pdo)
 {
     $statement = $pdo->prepare('SELECT * FROM likes WHERE user_id = :user_id AND post_id = :post_id');
     if (!$statement) {
@@ -171,7 +171,7 @@ function likedPost(int $userId, int $postId, PDO $pdo): bool
         ]);
     $like = $statement->fetch(PDO::FETCH_ASSOC);
 
-    if ($like) {
+    if ($like !== false) {
         return true;
     } else {
         return false;

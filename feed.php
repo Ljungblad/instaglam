@@ -33,17 +33,11 @@
             </div>
 
             <div class="post-likes">
-                <?php if (!likedPost($user['id'], $post['post_id'], $pdo)): ?>
                     <form method="post" class="post-like-form">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                        <button class="like-btn" type="submit">Like</button>
+                        <input type="hidden" name="action" value="<?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'Liked' : 'Unliked'; ?>">
+                        <button class="like-btn" type="submit"><?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'Unlike' : 'Like'; ?></button>
                     </form>
-                <?php else: ?>
-                    <form method="post" class="post-unlike-form">
-                        <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                        <button class="unlike-btn" type="submit">Unlike</button>
-                    </form>
-                <?php endif; ?>
             </div>
 
         </div>
@@ -51,5 +45,4 @@
 <?php endforeach; ?>
 
 <script src="assets/scripts/like.js"></script>
-<script src="assets/scripts/unlike.js"></script>
 <?php require __DIR__.'/views/footer.php'; ?>
