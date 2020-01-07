@@ -35,7 +35,7 @@
             <div class="post-likes">
                     <form method="post" class="post-like-form">
                         <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                        <input type="hidden" name="action" value="<?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'Liked' : 'Unliked'; ?>">
+                        <input type="hidden" name="action" value="<?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'liked' : 'unliked'; ?>">
                         <button class="like-btn" type="submit"><?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'Unlike' : 'Like'; ?></button>
                     </form>
             </div>

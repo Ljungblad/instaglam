@@ -10,7 +10,7 @@ likeForms.forEach(likeForm =>
 
     const formData = new FormData(likeForm);
 
-    if (likeForm[1].value === "Unliked") {
+    if (likeForm[1].value === "unliked") {
       console.log("liked!");
 
       fetch("/../../app/posts/like.php", {
@@ -23,13 +23,15 @@ likeForms.forEach(likeForm =>
             `.like-count${likeForm[0].value}`
           );
           const form = event.target.action;
+          const likeBtn = event.target.querySelector(".like-btn");
 
-          form.value = "Liked";
+          form.value = "liked";
           likeCounter.innerHTML = numberOfLikes;
           likeCounter.innerHTML += " likes";
+          likeBtn.innerHTML = "Unlike";
         });
     } else {
-      console.log("Unliked");
+      console.log("unliked");
 
       fetch("/../../app/posts/unlike.php", {
         method: "POST",
@@ -41,10 +43,12 @@ likeForms.forEach(likeForm =>
             `.like-count${likeForm[0].value}`
           );
           const form = event.target.action;
+          const likeBtn = event.target.querySelector(".like-btn");
 
-          form.value = "Unliked";
           likeCounter.innerHTML = numberOfLikes;
           likeCounter.innerHTML += " likes";
+          form.value = "unliked";
+          likeBtn.innerHTML = "Like";
         });
     }
   })
