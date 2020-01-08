@@ -87,6 +87,26 @@ function getAllPosts(PDO $pdo): array
 }
 
 /**
+ * Collects all posts from one user
+ *
+ * @param integer $userId
+ * @param PDO $pdo
+ * @return array
+ */
+function getAllUsersPosts(int $userId, PDO $pdo): array
+{
+    $statement = $pdo->query('SELECT * FROM posts WHERE user_id = :user_id ORDER BY date_created DESC');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':user_id' => $userId
+        ]);
+    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $posts;
+}
+
+/**
  * Collects all posts from a specific user and all their user-information
  *
  * @param int $postId

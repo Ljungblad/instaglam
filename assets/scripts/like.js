@@ -11,8 +11,6 @@ likeForms.forEach(likeForm =>
     const formData = new FormData(likeForm);
 
     if (likeForm[1].value === "unliked") {
-      console.log("liked!");
-
       fetch("/../../app/posts/like.php", {
         method: "POST",
         body: formData
@@ -31,8 +29,6 @@ likeForms.forEach(likeForm =>
           likeBtn.innerHTML = "Unlike";
         });
     } else {
-      console.log("unliked");
-
       fetch("/../../app/posts/unlike.php", {
         method: "POST",
         body: formData

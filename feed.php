@@ -1,6 +1,7 @@
-<?php require __DIR__.'/views/header.php'; ?>
-<?php require __DIR__.'/views/login-wall.php'; ?>
-<?php $user = getUserById($_SESSION['user']['id'], $pdo); ?>
+<?php
+    require __DIR__.'/views/header.php';
+    require __DIR__.'/views/login-wall.php';
+    $user = getUserById($_SESSION['user']['id'], $pdo); ?>
 
 <article>
     <h1>Feed</h1>
@@ -10,8 +11,10 @@
     <a href="/create-post.php"><p>Create New Post</p></a>
 </article>
 
-<?php foreach (getAllPosts($pdo) as $post): ?>
-<?php $likes = countLikes($post['post_id'], $pdo); ?>
+<?php
+    foreach (getAllPosts($pdo) as $post):
+    $likes = countLikes($post['post_id'], $pdo);
+    ?>
     <article class="feed-post-article">
         <div class="post-wrapper">
 

@@ -1,18 +1,17 @@
 <?php require __DIR__.'/views/header.php'; ?>
 <?php require __DIR__.'/views/login-wall.php'; ?>
 
-<article>
-    <h1>Create your post</h1>
-</article>
-
-<article>
+<article class="create-post-article">
     <?php require __DIR__.'/views/error.php'; ?>
-    <form action="app/posts/store.php" method="POST" enctype="multipart/form-data">
+    <form class="create-post-form" action="app/posts/store.php" method="POST" enctype="multipart/form-data">
             <label for="post_image">Choose image</label>
-            <input type="file" name="post_image" required>
+            <div class="upload-btn-wrapper">
+                <button class="upload-btn">Add image</button>
+                <input class="create-post-input" type="file" name="post_image">
+            </div>
             <label for="post_content">Please enter your content</label>
-            <textarea type="text" name="post_content" rows="8" cols="40" required></textarea>
-            <button type="submit">Upload post</button>
+            <textarea class="create-post-textarea" type="text" name="post_content" rows="8" cols="40" required></textarea>
+            <button class="create-post-button" type="submit">Upload post</button>
     </form>
 </article>
 

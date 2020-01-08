@@ -1,0 +1,17 @@
+.create-post-textarea {
+  height: 72px;
+  width: 80vw;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  padding-left: 10px;
+  resize: none;
+}
+
+.create-post-button {
+  height: 36px;
+  width: 80vw;
+  border: none;
+  border-radius: 5px;
+  background-color: teal;
+  font-size: 14px;
+}

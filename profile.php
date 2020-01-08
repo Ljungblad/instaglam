@@ -7,21 +7,24 @@
         <div class="profile-picture">
             <img src="<?php echo "/uploads/".$user['profile_avatar'] ?>" alt="profile picture" width="400">
         </div>
-        <div class="number-of-posts">
-            <p>3</p>
-            <p>Posts</p>
-        </div>
     </article>
 
-    <h1 class="profile-username"><?php echo $user['username'] ?></h1>
 
     <article>
-            <h3>Biography</h3>
-            <p><?php echo $user['biography'] ?></p>
-            <h3>Email</h3>
-            <p><?php echo $user['email'] ?></p>
-            <a href="/account.php"><p>Account settings</p></a>
+        <div class="profile-username-settings">
+            <h1 class="profile-username"><?php echo $user['username'] ?></h1>
+            <a href="/account.php"><img src="/icons/settings.svg" alt="Settings"></a>
+        </div>
+        <p class="profile-biography-description"><?php echo $user['biography'] ?></p>
     </article>
+
+    <div class="profile-posts">
+        <?php foreach (getAllUsersPosts($user['id'], $pdo) as $post): ?>
+            <div class="profile-post-image">
+                <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
+            </div>
+        <?php endforeach; ?>
+    </div>
 
 </div>
 

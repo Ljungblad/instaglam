@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/assets/styles/login.css">
     <link rel="stylesheet" href="/assets/styles/registration.css">
     <link rel="stylesheet" href="/assets/styles/account.css">
+    <link rel="stylesheet" href="/assets/styles/create-post.css">
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>

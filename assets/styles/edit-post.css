@@ -1,4 +1,47 @@
+.edit-post-form {
+  display: flex;
+}
+
+.edit-post-img-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .edit-post-form img {
   width: 100%;
   object-fit: contain;
+}
+
+.edit-post-textarea {
+  height: 72px;
+  width: 80vw;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  padding-left: 10px;
+  resize: none;
+}
+
+.edit-post-button {
+  height: 36px;
+  width: 80vw;
+  border: none;
+  border-radius: 5px;
+  background-color: teal;
+  font-size: 14px;
+}
+
+.edit-post-form input {
+  height: 36px;
+  width: 80vw;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  padding-left: 10px;
+}
+
+.edit-post-form label {
+  display: flex;
+  align-self: flex-start;
+  margin-left: 6px;
 }
