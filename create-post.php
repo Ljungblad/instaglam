@@ -2,7 +2,7 @@
 <?php require __DIR__.'/views/login-wall.php'; ?>
 
 <article class="create-post-article">
-    <h1 class="create-post-header">Create new post</h1>
+    <h1>Create new post</h1>
     <?php require __DIR__.'/views/error.php'; ?>
     <form class="create-post-form" action="app/posts/store.php" method="POST" enctype="multipart/form-data">
             <label class="create-post-label" for="post_image">Choose image</label>
