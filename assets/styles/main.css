@@ -27,6 +27,10 @@ a {
   margin: 5px;
 }
 
+button {
+  cursor: pointer;
+}
+
 article form {
   display: flex;
   align-items: center;
@@ -78,8 +82,4 @@ textarea[type="text"] {
   color: red;
   font-size: 16px;
   font-weight: 500;
-}
-
-a {
-  color: blue;
 }
