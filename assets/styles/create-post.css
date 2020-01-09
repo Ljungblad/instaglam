@@ -1,3 +1,18 @@
+.upload-btn {
+  display: flex;
+}
+
+.create-post-upload-icon {
+  width: 18px;
+  margin-right: 3px;
+}
+
+.create-post-label {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px;
+}
+
 .create-post-textarea {
   height: 72px;
   width: 80vw;
@@ -12,6 +27,8 @@
   width: 80vw;
   border: none;
   border-radius: 5px;
-  background-color: teal;
-  font-size: 14px;
+  background-color: #3f729b;
+  color: white;
+  font-size: 18px;
+  align-self: center;
 }

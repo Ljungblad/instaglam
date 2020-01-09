@@ -1,5 +1,18 @@
+.edit-post-header {
+  margin: 10px;
+}
+
 .edit-post-form {
   display: flex;
+}
+
+.edit-post-form::after {
+  content: "";
+  width: 95%;
+  height: 1px;
+  border-bottom: 1px solid #d4d4d4;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .edit-post-img-form {
@@ -7,11 +20,18 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 10px;
 }
 
-.edit-post-form img {
+.edit-post-img {
   width: 100%;
+  height: auto;
   object-fit: contain;
+}
+
+.edit-post-upload-icon {
+  width: 18px;
+  margin-right: 3px;
 }
 
 .edit-post-textarea {
@@ -28,8 +48,9 @@
   width: 80vw;
   border: none;
   border-radius: 5px;
-  background-color: teal;
-  font-size: 14px;
+  background-color: #3f729b;
+  color: white;
+  font-size: 18px;
 }
 
 .edit-post-form input {
@@ -40,8 +61,10 @@
   padding-left: 10px;
 }
 
-.edit-post-form label {
+.edit-post-label {
   display: flex;
-  align-self: flex-start;
-  margin-left: 6px;
+  align-self: center;
+  font-weight: 500;
+  font-size: 18px;
+  margin: 5px;
 }

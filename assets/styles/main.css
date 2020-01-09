@@ -7,6 +7,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
+  background-color: #ffffff;
 }
 
 h1 {
@@ -69,10 +70,14 @@ textarea[type="text"] {
 
 .success-message {
   color: green;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .error-message {
   color: red;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 a {

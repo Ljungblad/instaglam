@@ -25,7 +25,7 @@ if (isset($_POST['edit_biography'])) {
             ':biography' => $biography,
             ]);
             $_SESSION['user']['biography'] = $biography;
-            $_SESSION['success'] = 'Your biography were successfully updated';
+            $_SESSION['success'] = 'Your biography was successfully updated';
             redirect('/../../account.php');
     }
 }
@@ -74,7 +74,7 @@ if (isset($_POST['edit_email'])) {
         ':email' => $email,
     ]);
     $_SESSION['user']['email'] = $newEmail;
-    $_SESSION['success'] = 'Your email were successfully updated';
+    $_SESSION['success'] = 'Your email was successfully updated';
     redirect('/../../account.php');
     }
 }
@@ -105,7 +105,7 @@ if (isset($_POST['edit_password'])) {
                 ':password' => $newPassword,
                 ':id' => $id,
                 ]);
-                $_SESSION['success'] = 'Your password were successfully updated';
+                $_SESSION['success'] = 'Your password was successfully updated';
                 unset($user['password']);
                 redirect('/../../account.php');
             } else {

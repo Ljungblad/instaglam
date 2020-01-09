@@ -3,15 +3,15 @@
 <?php $user = getUserById($_SESSION['user']['id'], $pdo); ?>
 
 <article>
-    <h1>My Account Settings</h1>
+    <h1 class="account-h1">Account Settings</h1>
 
     <?php require __DIR__.'/views/error.php'; ?>
     <?php require __DIR__.'/views/success.php'; ?>
 
     <form class="account-form" action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
-        <label for="profile_picture">Edit your profile picture</label>
+        <label class="account-label" for="profile_picture">Edit your profile picture</label>
         <div class="upload-btn-wrapper">
-            <button class="upload-btn"><i class="fas fa-folder-open"></i>Select a file</button>
+            <button class="upload-btn"><img class="account-upload-icon" src="/icons/folder.svg"><p>Select a file</p></button>
             <input type="file" name="profile_picture">
         </div>
         <button class="account-btn" type="submit">Upload profile picture</button>

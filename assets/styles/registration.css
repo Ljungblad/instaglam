@@ -5,6 +5,8 @@
 }
 
 .registration-form label {
+  font-size: 18px;
+  font-weight: 500;
   margin-left: 6px;
 }
 
@@ -21,14 +23,16 @@
   width: 80vw;
   border: none;
   border-radius: 5px;
-  background-color: teal;
-  font-size: 14px;
+  background-color: #3f729b;
+  color: white;
+  font-size: 18px;
 }
 
 .login-link-container {
   display: flex;
   align-items: center;
   margin: 20px;
+  font-size: 18px;
 }
 
 .login-link-container a,

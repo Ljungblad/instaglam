@@ -84,6 +84,6 @@ if (isset($_GET['post_id'], $_POST['edit_post_content'])) {
         ':user_id' => $userId,
         ':content' => $contet,
         ]);
-    $_SESSION['success'] = 'Your post was successfully updated';
+    $_SESSION['success'] = 'Your post was successfully updated!';
 }
 redirect('/../../edit-post.php?post_id='.$postId);

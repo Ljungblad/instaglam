@@ -50,7 +50,7 @@ if (isset($_FILES['profile_picture'])) {
                 }
 
                 // $_SESSION['user']['profile_avatar'] = $fileNameNew;
-                $_SESSION['success'] = 'You have successfully uploaded your profile avatar!';
+                $_SESSION['success'] = 'You have successfully uploaded your profile picture!';
             } else {
                 $_SESSION['error'] = 'Your file was too big!';
             }
