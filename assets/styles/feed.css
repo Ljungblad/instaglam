@@ -18,6 +18,14 @@
   border-radius: 5px;
 }
 
+.feed-post-article::after {
+  content: "";
+  width: 90%;
+  height: 1px;
+  border-bottom: 1px solid #d4d4d4;
+  margin-top: 20px;
+}
+
 .post-creator {
   width: 100%;
   display: flex;
@@ -44,7 +52,8 @@
 }
 
 .post-creator-edit-link {
-  align-self: flex-end;
+  width: 25px;
+  margin-left: auto;
 }
 
 .link-edit-post {
