@@ -3,6 +3,10 @@
     require __DIR__.'/views/login-wall.php';
     $user = getUserById($_SESSION['user']['id'], $pdo);
     $post = getPostById($_GET['post_id'], $user['id'], $pdo);
+
+    if (!isOwnerOfPost(intval($post['user_id']), intval($user['id']))) {
+        redirect('views/404.php');
+    }
 ?>
 
 

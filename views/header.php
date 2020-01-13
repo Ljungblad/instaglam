@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/assets/styles/registration.css">
     <link rel="stylesheet" href="/assets/styles/account.css">
     <link rel="stylesheet" href="/assets/styles/create-post.css">
+    <link rel="stylesheet" href="/assets/styles/404.css">
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>

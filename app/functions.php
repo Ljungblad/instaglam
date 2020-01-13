@@ -48,10 +48,10 @@ function displaySuccess() {
 /**
  * Checking if the user is the owner of the post
  *
- * @param string $postUserId
- * @param string $userId
+ * @param int $postUserId
+ * @param int $userId
  * @return boolean
  */
-function isOwnerOfPost(string $postUserId, string $userId):bool {
+function isOwnerOfPost(int $postUserId, int $userId):bool {
     return $postUserId === $userId;
 }

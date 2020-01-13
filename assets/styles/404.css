@@ -1,0 +1,24 @@
+.error-page-wrapper {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.error-page-header {
+  margin: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.error-page-home-btn {
+  align-self: center;
+}
+
+.error-page-home-btn button {
+  width: 150px;
+  height: 36px;
+  border: none;
+  border-radius: 5px;
+  background-color: #3f729b;
+  color: white;
+}
