@@ -1,7 +1,13 @@
 <?php
     require __DIR__.'/views/header.php';
     require __DIR__.'/views/login-wall.php';
-    $user = getUserById($_SESSION['user']['id'], $pdo);
+
+    if (!profileExist($_GET['user_id'], $pdo)) {
+        redirect('/views/404.php');
+    }
+
+    $loggedInUserId = $_SESSION['user']['id'];
+    $user = getUserById($_GET['user_id'], $pdo);
     ?>
 
 <div class="profile-wrapper">
@@ -15,7 +21,9 @@
     <article>
         <div class="profile-username-settings">
             <h1 class="profile-username"><?php echo $user['username'] ?></h1>
+            <?php if (isOwnerOfProfile($user['id'], $loggedInUserId)): ?>
             <a href="/account.php"><img src="/icons/settings.svg" alt="Settings"></a>
+            <?php endif ?>
         </div>
         <p class="profile-biography-description"><?php echo $user['biography'] ?></p>
     </article>

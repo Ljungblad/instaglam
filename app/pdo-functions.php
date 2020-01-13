@@ -89,7 +89,7 @@ function getAllPosts(PDO $pdo): array
 /**
  * Collects all posts from one user
  *
- * @param integer $userId
+ * @param int $userId
  * @param PDO $pdo
  * @return array
  */
@@ -132,8 +132,8 @@ function getPostById(int $postId, int $userId, PDO $pdo): array {
 /**
  * Collect the name of the post image
  *
- * @param integer $userId
- * @param integer $postId
+ * @param int $userId
+ * @param int $postId
  * @param PDO $pdo
  * @return array
  */
@@ -154,9 +154,9 @@ function getImageNameById(int $userId, int $postId, PDO $pdo): array
 /**
  * Counts the numbers of likes on a post
  *
- * @param integer $postId
+ * @param int $postId
  * @param PDO $pdo
- * @return integer
+ * @return int
  */
 function countLikes(int $postId, PDO $pdo): int
 {
@@ -174,12 +174,12 @@ function countLikes(int $postId, PDO $pdo): int
 /**
  * Checking if the post is liked or not
  *
- * @param integer $userId
- * @param integer $postId
+ * @param int $userId
+ * @param int $postId
  * @param PDO $pdo
- * @return boolean
+ * @return bool
  */
-function likedPost(int $userId, int $postId, PDO $pdo)
+function likedPost(int $userId, int $postId, PDO $pdo): bool
 {
     $statement = $pdo->prepare('SELECT * FROM likes WHERE user_id = :user_id AND post_id = :post_id');
     if (!$statement) {
@@ -192,6 +192,76 @@ function likedPost(int $userId, int $postId, PDO $pdo)
     $like = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($like !== false) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Collects the user id of the posts creator (along with other post information)
+ *
+ * @param int $postId
+ * @param PDO $pdo
+ * @return array
+ */
+function getUserIdByPostId(int $postId, PDO $pdo): array
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE post_id = :post_id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':post_id' => $postId,
+        ]);
+    $userId = $statement->fetch(PDO::FETCH_ASSOC);
+    return $userId;
+}
+
+/**
+ * Checking if the post exist in the database
+ *
+ * @param int $postId
+ * @param PDO $pdo
+ * @return bool
+ */
+function postExist(int $postId, PDO $pdo): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM posts WHERE post_id = :post_id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':post_id' => $postId,
+        ]);
+    $post = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($post) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * Checking if the user exist in the database
+ *
+ * @param int $userId
+ * @param PDO $pdo
+ * @return bool
+ */
+function profileExist(int $userId, PDO $pdo): bool
+{
+    $statement = $pdo->prepare('SELECT * FROM users WHERE id = :user_id');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':user_id' => $userId,
+        ]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+    if ($user) {
         return true;
     } else {
         return false;

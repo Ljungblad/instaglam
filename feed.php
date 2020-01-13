@@ -18,7 +18,7 @@
 
             <div class="post-creator">
                 <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>">
-                <a href="#"><h3 class="post-username"><?php echo $post['username']; ?></h3></a>
+                <a href="<?php echo '/view-profile.php?user_id='.$post['user_id'] ?>"><h3 class="post-username"><?php echo $post['username']; ?></h3></a>
                 <?php if (isOwnerOfPost($post['user_id'], $user['id'])): ?>
                     <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id='.$post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg"></a>
                 <?php endif; ?>

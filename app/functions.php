@@ -32,7 +32,8 @@ function isLoggedIn()
  *
  * @return void
  */
-function displayError() {
+function displayError()
+{
         return isset($_SESSION['error']);
 }
 
@@ -41,7 +42,8 @@ function displayError() {
  *
  * @return void
  */
-function displaySuccess() {
+function displaySuccess()
+{
         return isset($_SESSION['success']);
 }
 
@@ -50,8 +52,20 @@ function displaySuccess() {
  *
  * @param int $postUserId
  * @param int $userId
- * @return boolean
+ * @return bool
  */
-function isOwnerOfPost(int $postUserId, int $userId):bool {
+function isOwnerOfPost(int $postUserId, int $userId): bool
+{
     return $postUserId === $userId;
+}
+
+/**
+ * Checking if the logged in user is the owner of visited profile
+ *
+ * @param int $profileUserId
+ * @param int $loggedInUserId
+ * @return bool
+ */
+function isOwnerOfProfile(int $profileUserId, int $loggedInUserId): bool {
+    return $profileUserId === $loggedInUserId;
 }
