@@ -1,24 +1,17 @@
 <?php
     require __DIR__.'/views/header.php';
     require __DIR__.'/views/login-wall.php';
-    $user = getUserById($_SESSION['user']['id'], $pdo); ?>
-
-<article class="create-new-post-wrapper">
-    <a href="/create-post.php"><button class="create-post-btn">Create new post</button></a>
-    <?php require __DIR__.'/views/error.php'; ?>
-    <?php require __DIR__.'/views/success.php'; ?>
-</article>
-
-<?php
-    foreach (getAllPosts($pdo) as $post):
+    $user = getUserById($_SESSION['user']['id'], $pdo);
+    $post = getPostById($_GET['post_id'], $user['id'], $pdo);
     $likes = countLikes($post['post_id'], $pdo);
-    ?>
-    <article class="feed-post-article">
+?>
+
+<article class="feed-post-article">
         <div class="post-wrapper">
 
             <div class="post-creator">
                 <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>">
-                <a href="#"><h3 class="post-username"><?php echo $post['username']; ?></h3></a>
+                <a href="<?php echo '/profile.php' ?>"><h3 class="post-username"><?php echo $post['username']; ?></h3></a>
                 <?php if (isOwnerOfPost($post['user_id'], $user['id'])): ?>
                     <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id='.$post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg"></a>
                 <?php endif; ?>
@@ -43,6 +36,5 @@
 
         </div>
     </article>
-<?php endforeach; ?>
 
 <?php require __DIR__.'/views/footer.php'; ?>

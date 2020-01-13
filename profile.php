@@ -21,7 +21,7 @@
     <div class="profile-posts">
         <?php foreach (getAllUsersPosts($user['id'], $pdo) as $post): ?>
             <div class="profile-post-image">
-                <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
+                <a href="<?php echo '/view-post.php?post_id='.$post['post_id'] ?>"><img src="<?php echo '/uploads/'.$post['image']; ?>" alt=""></a>
             </div>
         <?php endforeach; ?>
     </div>
