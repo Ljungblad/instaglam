@@ -1,5 +1,7 @@
-<?php require __DIR__.'/views/header.php'; ?>
-<?php require __DIR__.'/views/login-wall.php'; ?>
+<?php
+    require __DIR__.'/views/header.php';
+    require __DIR__.'/views/login-wall.php';
+?>
 
 <article class="create-post-article">
     <h1>Create new post</h1>

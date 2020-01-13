@@ -1,6 +1,8 @@
-<?php require __DIR__.'/views/header.php'; ?>
-<?php require __DIR__.'/views/login-wall.php';?>
-<?php $user = getUserById($_SESSION['user']['id'], $pdo); ?>
+<?php
+    require __DIR__.'/views/header.php';
+    require __DIR__.'/views/login-wall.php';
+    $user = getUserById($_SESSION['user']['id'], $pdo);
+?>
 
 <article>
     <h1 class="account-h1">Account Settings</h1>

@@ -8,8 +8,6 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
-//TODO: ADD FUNCTION THAT CHECKS THE OWNER OF THE POST WITH THE ID
-
 // Checking if the post id and post image is set
 if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     $image = $_FILES['edit_post_image'];

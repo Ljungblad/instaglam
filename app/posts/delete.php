@@ -8,8 +8,6 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
-//TODO: ADD FUNCTION THAT CHECKS THE OWNER OF THE POST WITH THE ID
-
 // Checking if post id and password is set
 if (isset($_GET['post_id'], $_POST['password'])) {
     $id = (int) $_SESSION['user']['id'];

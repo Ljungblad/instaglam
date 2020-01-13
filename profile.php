@@ -2,7 +2,7 @@
     require __DIR__.'/views/header.php';
     require __DIR__.'/views/login-wall.php';
     $user = getUserById($_SESSION['user']['id'], $pdo);
-    ?>
+?>
 
 <div class="profile-wrapper">
     <article class="profile-top-section">

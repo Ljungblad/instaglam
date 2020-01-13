@@ -8,7 +8,7 @@
 
     $loggedInUserId = $_SESSION['user']['id'];
     $user = getUserById($_GET['user_id'], $pdo);
-    ?>
+?>
 
 <div class="profile-wrapper">
     <article class="profile-top-section">

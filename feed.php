@@ -1,7 +1,8 @@
 <?php
     require __DIR__.'/views/header.php';
     require __DIR__.'/views/login-wall.php';
-    $user = getUserById($_SESSION['user']['id'], $pdo); ?>
+    $user = getUserById($_SESSION['user']['id'], $pdo);
+?>
 
 <article class="create-new-post-wrapper">
     <a href="/create-post.php"><button class="create-post-btn">Create new post</button></a>

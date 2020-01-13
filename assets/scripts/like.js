@@ -2,14 +2,14 @@
 
 const likeForms = document.querySelectorAll(".post-like-form");
 
-// Adds a like to a post
-
+// Adds or removes likes from a post
 likeForms.forEach(likeForm =>
   likeForm.addEventListener("submit", event => {
     event.preventDefault();
 
     const formData = new FormData(likeForm);
 
+    // Checking if the user haven't liked the post.
     if (likeForm[1].value === "unliked") {
       fetch("/../../app/posts/like.php", {
         method: "POST",
