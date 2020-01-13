@@ -21,9 +21,9 @@ if (isset($_POST['username'], $_POST['password'])) {
     if (password_verify($password, $user['password'])) {
         unset($user['password']);
         $_SESSION['user'] = $user;
-        redirect('/profile.php');
+        redirect('/feed.php');
     } else {
         $_SESSION['error'] = 'The password is not correct!';
     }
 }
-redirect('/login.php');
+redirect('/index.php');

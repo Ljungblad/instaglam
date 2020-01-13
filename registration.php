@@ -42,7 +42,7 @@
 
     <div class="login-link-container">
         <p>Already have an account?</p>
-        <a href="/login.php"><p class="login-link">Login here</p></a>
+        <a href="/index.php"><p class="login-link">Login here</p></a>
     </div>
 </article>
 

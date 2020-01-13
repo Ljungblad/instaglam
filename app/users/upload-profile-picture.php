@@ -45,7 +45,7 @@ if (isset($_FILES['profile_picture'])) {
                     ':profile_avatar' => $fileNameNew,
                     ]);
 
-                if ($currentProfilePicture !== NULL) {
+                if ($currentProfilePicture !== 'default-profile-picture.jpg') {
                     unlink(__DIR__."/../../uploads/".$currentProfilePicture);
                 }
 

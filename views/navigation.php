@@ -1,13 +1,9 @@
 <nav>
     <ul class="nav-ul">
 
-        <li class="nav-li">
-        <a href="/index.php"><img class="nav-img" src="/icons/home.svg" alt="Home"></a>
-        </li>
-
         <?php if (!isLoggedIn()): ?>
             <li class="nav-li">
-                <a href="/login.php"><img class="nav-img" src="/icons/login.svg" alt="Login"></a>
+                <a href="/index.php"><img class="nav-img" src="/icons/home.svg" alt="Login"></a>
             </li>
         <?php endif; ?>
 
@@ -19,7 +15,7 @@
 
         <?php if (isLoggedIn()): ?>
             <li class="nav-li">
-                <a href="/feed.php"><img class="nav-img" src="/icons/feed.svg" alt="Feed"></a>
+                <a href="/feed.php"><img class="nav-img" src="/icons/home.svg" alt="Home"></a>
             </li>
         <?php endif; ?>
 

@@ -1,3 +1,9 @@
+.instaglam-header {
+  margin: 20px;
+  font-family: "Petit Formal Script", cursive;
+  font-size: 40px;
+}
+
 .login-form {
   display: flex;
   flex-direction: column;

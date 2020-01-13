@@ -27,6 +27,10 @@ a {
   margin: 5px;
 }
 
+a {
+  color: royalblue;
+}
+
 button {
   cursor: pointer;
 }
