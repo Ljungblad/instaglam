@@ -25,6 +25,9 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     $imageActualExt = strtolower(end($imageExt));
     $allowed = ['jpg', 'jpeg', 'png'];
 
+    // Checking if the input file exists
+    if ($imageSize > 0) {
+
     // Checking if the uploaded image has the right format
     if (in_array($imageActualExt, $allowed)) {
 
@@ -65,6 +68,7 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
         }
     } else {
         $_SESSION['error'] = 'You cannot upload this type of file!';
+    }
     }
 }
 

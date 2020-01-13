@@ -79,10 +79,10 @@
 }
 
 .like-btn {
-  width: 60px;
-  height: 25px;
-  border: 1px solid black;
-  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: transparent;
 }
 
 .post-likes {
@@ -94,4 +94,18 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.unlike-img {
+  width: 30px;
+  height: 30px;
+  background-image: url("/icons/empty-heart.svg");
+  background-repeat: no-repeat;
+}
+
+.like-img {
+  width: 30px;
+  height: 30px;
+  background-image: url("/icons/filled-heart.svg");
+  background-repeat: no-repeat;
 }

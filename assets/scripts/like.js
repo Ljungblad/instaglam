@@ -21,12 +21,13 @@ likeForms.forEach(likeForm =>
             `.like-count${likeForm[0].value}`
           );
           const form = event.target.action;
-          const likeBtn = event.target.querySelector(".like-btn");
+          const likeImg = event.target.querySelector(".unlike-img");
 
+          likeImg.classList.add("like-img");
+          likeImg.classList.remove("unlike-img");
           form.value = "liked";
           likeCounter.innerHTML = numberOfLikes;
           likeCounter.innerHTML += " likes";
-          likeBtn.innerHTML = "Unlike";
         });
     } else {
       fetch("/../../app/posts/unlike.php", {
@@ -39,12 +40,13 @@ likeForms.forEach(likeForm =>
             `.like-count${likeForm[0].value}`
           );
           const form = event.target.action;
-          const likeBtn = event.target.querySelector(".like-btn");
+          const likeImg = event.target.querySelector(".like-img");
 
+          likeImg.classList.add("unlike-img");
+          likeImg.classList.remove("like-img");
           likeCounter.innerHTML = numberOfLikes;
           likeCounter.innerHTML += " likes";
           form.value = "unliked";
-          likeBtn.innerHTML = "Like";
         });
     }
   })
