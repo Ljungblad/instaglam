@@ -1,5 +1,9 @@
 nav {
   border-bottom: 2px solid #d4d4d4;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .nav-ul {
@@ -11,6 +15,7 @@ nav {
 
 .nav-img {
   width: 40px;
+  height: auto;
   padding: 5px;
   margin-top: 5px;
 }

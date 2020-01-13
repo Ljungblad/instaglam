@@ -49,3 +49,17 @@
 .sign-up-link {
   font-weight: 800;
 }
+
+@media (min-width: 768px) {
+  .login-form input,
+  label {
+    width: 60vw;
+  }
+
+  .login-btn {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1025px) {
+}

@@ -108,3 +108,12 @@
   background-image: url("/icons/filled-heart.svg");
   background-repeat: no-repeat;
 }
+
+@media (min-width: 768px) {
+  .create-post-btn {
+    width: 50vw;
+  }
+}
+
+@media (min-width: 1025px) {
+}

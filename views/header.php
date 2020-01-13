@@ -23,3 +23,4 @@
 </head>
 <body>
     <?php require __DIR__.'/navigation.php'; ?>
+    <div class="page-wrapper">

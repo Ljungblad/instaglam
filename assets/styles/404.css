@@ -14,11 +14,22 @@
   align-self: center;
 }
 
-.error-page-home-btn button {
+.error-page-btn {
   width: 150px;
   height: 36px;
   border: none;
   border-radius: 5px;
   background-color: #3f729b;
   color: white;
+}
+
+@media (min-width: 768px) {
+  .error-page-btn {
+    font-size: 18px;
+    width: 166px;
+    height: 42px;
+  }
+}
+
+@media (min-width: 1025px) {
 }

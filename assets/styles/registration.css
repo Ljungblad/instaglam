@@ -44,3 +44,17 @@ p {
 .login-link {
   font-weight: 800;
 }
+
+@media (min-width: 768px) {
+  .registration-form input,
+  label {
+    width: 60vw;
+  }
+
+  .sign-up-btn {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1025px) {
+}

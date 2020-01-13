@@ -10,6 +10,10 @@ body {
   background-color: #ffffff;
 }
 
+.page-wrapper {
+  margin-top: 60px;
+}
+
 h1 {
   font-size: 2em;
   text-align: center;
@@ -93,4 +97,28 @@ textarea[type="text"] {
   font-size: 16px;
   font-weight: 500;
   text-align: center;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .page-wrapper {
+    width: 70vw;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .page-wrapper {
+    width: 50vw;
+    margin: 0 auto;
+    margin-top: 60px;
+  }
 }

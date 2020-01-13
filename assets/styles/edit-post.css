@@ -43,7 +43,7 @@
   resize: none;
 }
 
-.edit-post-button {
+.edit-post-btn {
   height: 36px;
   width: 80vw;
   border: none;
@@ -67,4 +67,25 @@
   font-weight: 500;
   font-size: 18px;
   margin: 5px;
+}
+
+@media (min-width: 768px) {
+  .edit-post-form label,
+  .edit-post-form input,
+  .edit-post-img-form,
+  .edit-post-textarea,
+  .edit-post-label,
+  .edit-post-input,
+  .edit-post-btn,
+  .edit-post-img {
+    width: 60vw;
+  }
+
+  .delete-post-form h2 {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1025px) {
 }

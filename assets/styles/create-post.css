@@ -32,3 +32,25 @@
   font-size: 18px;
   align-self: center;
 }
+
+@media (min-width: 768px) {
+  .create-post-form {
+    margin-top: 40px;
+  }
+
+  .upload-btn-wrapper {
+    align-self: flex-start;
+    margin-left: 5px;
+  }
+
+  .create-post-textarea {
+    width: 60vw;
+  }
+
+  .create-post-button {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1025px) {
+}

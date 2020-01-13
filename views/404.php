@@ -4,7 +4,7 @@
 
     <div class="error-page-wrapper">
         <h2 class="error-page-header">Oops something went wrong!</h2>
-        <a class="error-page-home-btn" href="/../feed.php"><button>Take me home</button></a>
+        <a class="error-page-home-btn" href="/../feed.php"><button class="error-page-btn">Take me home</button></a>
     </div>
 
 <?php require __DIR__.'/footer.php'; ?>
