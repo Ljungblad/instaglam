@@ -102,4 +102,12 @@
 }
 
 @media (min-width: 1025px) {
+  .account-form,
+  .account-form textarea,
+  .account-label,
+  .account-input,
+  .account-btn,
+  .biography-label {
+    width: 40vw;
+  }
 }

@@ -18,7 +18,7 @@
     </article>
 
 
-    <article>
+    <article class="profile-username-wrapper">
         <div class="profile-username-settings">
             <h1 class="profile-username"><?php echo $user['username'] ?></h1>
             <?php if (isOwnerOfProfile($user['id'], $loggedInUserId)): ?>

@@ -57,4 +57,12 @@ p {
 }
 
 @media (min-width: 1025px) {
+  .registration-form input,
+  .registration-form label {
+    width: 40vw;
+  }
+
+  .sign-up-btn {
+    width: 40vw;
+  }
 }

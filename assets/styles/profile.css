@@ -35,6 +35,11 @@ button {
   text-align: center;
 }
 
+.profile-username-wrapper {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
 .profile-username {
   align-self: flex-start;
   margin: 5px;
@@ -43,6 +48,7 @@ button {
 .profile-biography-description {
   padding: 5px;
   font-size: 16px;
+  align-self: flex-start;
 }
 
 .profile-username-settings {
@@ -93,7 +99,4 @@ button {
     width: 125px;
     height: auto;
   }
-}
-
-@media (min-width: 1025px) {
 }

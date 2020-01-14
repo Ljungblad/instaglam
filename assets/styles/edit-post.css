@@ -88,4 +88,14 @@
 }
 
 @media (min-width: 1025px) {
+  .edit-post-form label,
+  .edit-post-form input,
+  .edit-post-img-form,
+  .edit-post-textarea,
+  .edit-post-label,
+  .edit-post-input,
+  .edit-post-btn,
+  .edit-post-img {
+    width: 40vw;
+  }
 }

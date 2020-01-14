@@ -12,7 +12,7 @@
     </article>
 
 
-    <article>
+    <article class="profile-username-wrapper">
         <div class="profile-username-settings">
             <h1 class="profile-username"><?php echo $user['username'] ?></h1>
             <a href="/account.php"><img src="/icons/settings.svg" alt="Settings"></a>

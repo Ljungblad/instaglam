@@ -62,4 +62,12 @@
 }
 
 @media (min-width: 1025px) {
+  .login-form input,
+  .login-form label {
+    width: 40vw;
+  }
+
+  .login-btn {
+    width: 40vw;
+  }
 }

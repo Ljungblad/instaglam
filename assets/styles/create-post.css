@@ -53,4 +53,19 @@
 }
 
 @media (min-width: 1025px) {
+  .create-post-form {
+    width: 40vw;
+  }
+
+  .create-post-label {
+    width: 40vw;
+  }
+
+  .create-post-textarea {
+    width: 40vw;
+  }
+
+  .create-post-button {
+    width: 40vw;
+  }
 }

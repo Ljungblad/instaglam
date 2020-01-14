@@ -116,4 +116,7 @@
 }
 
 @media (min-width: 1025px) {
+  .create-post-btn {
+    width: 20vw;
+  }
 }
