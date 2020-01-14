@@ -36,8 +36,8 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
             if ($imageSize < 3145728) {
 
                 $imageNameNew = time().".".$userId.".".$imageActualExt;
-                $imageDestination = '/../../uploads/'.$imageNameNew;
-                move_uploaded_file($imageTmpName, __DIR__.$imageDestination);
+                $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
+                move_uploaded_file($imageTmpName, $imageDestination);
 
                 // Get the name of the current post image
                 $currentPostImage = getImageNameById($userId, $postId, $pdo);

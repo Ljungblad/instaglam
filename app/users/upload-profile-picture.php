@@ -8,10 +8,12 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
+
 if (isset($_FILES['profile_picture'])) {
     $file = $_FILES['profile_picture'];
+    $user = getUserById(intval($_SESSION['user']['id']), $pdo);
     $id = (int) $_SESSION['user']['id'];
-    $currentProfilePicture = $_SESSION['user']['profile_avatar'];
+    $currentProfilePicture = $user['profile_avatar'];
 
     $fileName = $file['name'];
     $fileTmpName = $file['tmp_name'];
@@ -32,8 +34,8 @@ if (isset($_FILES['profile_picture'])) {
             if ($fileSize < 3145728) {
 
                 $fileNameNew = time().".".$id.".".$fileActualExt;
-                $fileDestination = '/../../uploads/'.$fileNameNew;
-                move_uploaded_file($fileTmpName, __DIR__.$fileDestination);
+                $fileDestination = __DIR__.'/../../uploads/'.$fileNameNew;
+                move_uploaded_file($fileTmpName, $fileDestination);
 
                 // Updates the profile picture in the database
                 $statement = $pdo->prepare('UPDATE users SET profile_avatar = :profile_avatar WHERE id = :id');

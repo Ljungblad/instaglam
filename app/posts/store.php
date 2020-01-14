@@ -34,8 +34,8 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
             if ($imageSize < 3145728) {
 
                 $imageNameNew = time().".".$id.".".$imageActualExt;
-                $imageDestination = '/../../uploads/'.$imageNameNew;
-                move_uploaded_file($imageTmpName, __DIR__.$imageDestination);
+                $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
+                move_uploaded_file($imageTmpName, $imageDestination);
 
                 // Updates the profile picture in the database
                 $statement = $pdo->prepare('INSERT INTO posts (user_id, content, image, date_created) VALUES (:user_id, :content, :image, :date_created)');

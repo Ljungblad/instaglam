@@ -97,6 +97,6 @@ button {
 @media (min-width: 768px) {
   .profile-picture {
     width: 125px;
-    height: auto;
+    height: 125px;
   }
 }

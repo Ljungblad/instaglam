@@ -1,2 +1,4 @@
-uploads/
+uploads/*
+!uploads/.gitkeep
+!uploads/default-profile-picture.jpg
 DS_Store
