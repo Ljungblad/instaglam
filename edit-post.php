@@ -18,11 +18,11 @@
 
 <article>
     <form class="edit-post-form" action="<?php echo 'app/posts/update.php?post_id='.$post['post_id']; ?>" method="POST" enctype="multipart/form-data">
-        <img class="edit-post-img" src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
+        <img class="edit-post-img" src="<?php echo '/uploads/'.$post['image']; ?>" alt="post image" loading="lazy">
         <div class="edit-post-img-form">
             <label class="edit-post-label" for="edit_post_image">Edit image</label>
             <div class="upload-btn-wrapper">
-                <button class="upload-btn"><img class="edit-post-upload-icon" src="/icons/folder.svg"><p>Select a file</p></button>
+                <button class="upload-btn"><img class="edit-post-upload-icon" src="/icons/folder.svg" alt="folder" loading="lazy"><p>Select a file</p></button>
                 <input type="file" name="edit_post_image">
             </div>
             <label class="edit-post-label" for="edit_post_content">Edit description</label>

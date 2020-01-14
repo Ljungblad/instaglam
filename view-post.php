@@ -16,16 +16,16 @@
         <div class="post-wrapper">
 
             <div class="post-creator">
-                <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>">
+                <img class="post-profile-picture" src="<?php echo '/uploads/'.$post['profile_avatar']; ?>" alt="profile picture" loading="lazy">
                 <a href="<?php echo '/view-profile.php?user_id='.$userId['user_id'] ?>"><h3 class="post-username"><?php echo $post['username']; ?></h3></a>
                 <?php if (isOwnerOfPost($post['user_id'], $user['id'])): ?>
-                    <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id='.$post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg"></a>
+                    <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id='.$post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg" alt="edit" loading="lazy"></a>
                 <?php endif; ?>
             </div>
 
 
             <div class="post-content">
-                <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="">
+                <img src="<?php echo '/uploads/'.$post['image']; ?>" alt="post image" loading="lazy">
                 <div class="feed-likes" >
                     <p class="like-count<?php echo $post['post_id'] ?>"><?php echo $likes; ?> likes</p>
                 </div>

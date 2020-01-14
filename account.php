@@ -13,7 +13,7 @@
     <form class="account-form" action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
         <label class="account-label" for="profile_picture">Edit your profile picture</label>
         <div class="upload-btn-wrapper">
-            <button class="upload-btn"><img class="account-upload-icon" src="/icons/folder.svg"><p>Select a file</p></button>
+            <button class="upload-btn"><img class="account-upload-icon" src="/icons/folder.svg" loading="lazy"><p>Select a file</p></button>
             <input type="file" name="profile_picture">
         </div>
         <button class="account-btn" type="submit">Upload profile picture</button>
