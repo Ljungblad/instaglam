@@ -2,13 +2,22 @@
     require __DIR__.'/views/header.php';
     require __DIR__.'/views/login-wall.php';
     $user = getUserById($_SESSION['user']['id'], $pdo);
+    $posts = getAllPosts($pdo);
 ?>
 
+<?php if (empty($posts)): ?>
+    <article class="no-posts-article">
+        <h1>There are no posts yet.</h2>
+        <h2>Be the first to create one!</h2>
+    </article>
+<?php endif; ?>
+
 <article class="create-new-post-wrapper">
-    <a href="/create-post.php"><button class="create-post-btn">Create new post</button></a>
+    <a href="/create-post.php"><button class="create-post-btn">New post</button></a>
     <?php require __DIR__.'/views/error.php'; ?>
     <?php require __DIR__.'/views/success.php'; ?>
 </article>
+
 
 <?php
     foreach (getAllPosts($pdo) as $post):

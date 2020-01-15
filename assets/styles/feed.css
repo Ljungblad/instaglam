@@ -2,6 +2,11 @@
   margin: 10px;
 }
 
+.no-posts-article {
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+
 .create-post-btn {
   height: 36px;
   width: 80vw;
