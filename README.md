@@ -22,7 +22,7 @@ Instaglam (Picture This) - An Assignment in web development
 - HTML
 - CSS
 
-# Features
+## Features
 
 - As a user I should be able to create an account.
 
