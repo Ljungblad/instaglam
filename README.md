@@ -1,7 +1,7 @@
 <img src="https://media.giphy.com/media/3E2PjzNzMVCwrXnXwC/giphy.gif" width="100%">
 
 # Instaglam
-Picture This - An Assignment in web development
+Instaglam (Picture This) - An Assignment in web development
 
 ## How to use  
 1. Download or clone [this directory](https://github.com/Ljungblad/instaglam) with Github Desktop or bash
