@@ -101,7 +101,7 @@ function getAllUsersPosts(int $userId, PDO $pdo): array
     }
     $statement->execute([
         ':user_id' => $userId
-        ]);
+    ]);
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $posts;
 }
@@ -114,7 +114,8 @@ function getAllUsersPosts(int $userId, PDO $pdo): array
  * @param PDO $pdo
  * @return array
  */
-function getPostById(int $postId, int $userId, PDO $pdo): array {
+function getPostById(int $postId, int $userId, PDO $pdo): array
+{
     $statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users on posts.user_id = users.id WHERE id = :user_id AND post_id = :post_id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
@@ -146,7 +147,7 @@ function getImageNameById(int $userId, int $postId, PDO $pdo): array
     $statement->execute([
         ':user_id' => $userId,
         ':post_id' => $postId,
-        ]);
+    ]);
     $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
     return $currentPostImage;
 }
@@ -166,9 +167,9 @@ function countLikes(int $postId, PDO $pdo): int
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
-    return (int)$likes['COUNT(*)'];
+    return (int) $likes['COUNT(*)'];
 }
 
 /**
@@ -188,7 +189,7 @@ function likedPost(int $userId, int $postId, PDO $pdo): bool
     $statement->execute([
         ':user_id' => $userId,
         ':post_id' => $postId,
-        ]);
+    ]);
     $like = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($like !== false) {
@@ -213,7 +214,7 @@ function getUserIdByPostId(int $postId, PDO $pdo): array
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $userId = $statement->fetch(PDO::FETCH_ASSOC);
     return $userId;
 }
@@ -233,7 +234,7 @@ function postExist(int $postId, PDO $pdo): bool
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($post) {
@@ -258,7 +259,7 @@ function profileExist(int $userId, PDO $pdo): bool
     }
     $statement->execute([
         ':user_id' => $userId,
-        ]);
+    ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
@@ -266,4 +267,26 @@ function profileExist(int $userId, PDO $pdo): bool
     } else {
         return false;
     }
+}
+
+
+function getUserFromSearch($search, $pdo)
+{
+
+    $search = trim(filter_var($_GET['search'], FILTER_SANITIZE_STRING));
+    $search = '%' . $search . '%';
+
+
+    $statement = $pdo->prepare('SELECT username, id, profile_avatar FROM users WHERE username LIKE :search');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+
+    $statement->bindParam(':search', $search, PDO::PARAM_STR);
+
+    $statement->execute();
+    $usersFromSearch = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $usersFromSearch;
 }
