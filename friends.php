@@ -1,39 +1,37 @@
 <?php
 require __DIR__ . '/views/header.php';
 require __DIR__ . '/views/login-wall.php';
-$user = getUserById($_SESSION['user']['id'], $pdo);
-$posts = getAllPosts($pdo);
+
+$posts = getPostFromFollowing($_SESSION['user']['id'], $pdo);
+
 ?>
 
 <?php if (empty($posts)) : ?>
     <article class="no-posts-article">
-        <h1>There are no posts yet.</h2>
-            <h2>Be the first to create one!</h2>
+        <h1>You don't follow anyone yet.</h2>
+            <h2>Plz do</h2>
     </article>
 <?php endif; ?>
 
-<article class="create-new-post-wrapper">
-    <a href="/create-post.php"><button class="create-post-btn">New post</button></a>
-    <?php require __DIR__ . '/views/error.php'; ?>
-    <?php require __DIR__ . '/views/success.php'; ?>
-</article>
-
-
 <?php
-foreach (getAllPosts($pdo) as $post) :
-    $likes = countLikes($post['post_id'], $pdo);
+foreach ($posts as $post) :
+
+    $user = getUserById($post['user_id'], $pdo);
+
+    $likes = countLikes((int) $post['user_id'], $pdo);
+
 ?>
     <article class="feed-post-article">
         <div class="post-wrapper">
 
             <div class="post-creator">
-                <img class="post-profile-picture" src="<?php echo '/uploads/' . $post['profile_avatar']; ?>" alt="profile picture" loading="lazy">
-                <a href="<?php echo '/view-profile.php?user_id=' . $post['user_id'] ?>">
-                    <h3 class="post-username"><?php echo $post['username']; ?></h3>
+                <img class="post-profile-picture" src="<?php echo '/uploads/' . $user['profile_avatar']; ?>" alt="profile picture" loading="lazy">
+                <a href="<?php echo '/view-profile.php?user_id=' . $user['id'] ?>">
+                    <h3 class="post-username"><?php echo $user['username']; ?></h3>
                 </a>
-                <?php if (isOwnerOfPost($post['user_id'], $user['id'])) : ?>
+                <!-- <?php if (isOwnerOfPost($post['user_id'], $user['id'])) : ?>
                     <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id=' . $post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg" alt="edit" loading="lazy"></a>
-                <?php endif; ?>
+                <?php endif; ?> -->
             </div>
 
 
@@ -48,9 +46,9 @@ foreach (getAllPosts($pdo) as $post) :
             <div class="post-likes">
                 <form method="post" class="post-like-form">
                     <input type="hidden" name="post_id" value="<?php echo $post['post_id']; ?>">
-                    <input type="hidden" name="action" value="<?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'liked' : 'unliked'; ?>">
+                    <input type="hidden" name="action" value="<?php echo likedPost((int) $_SESSION['user']['id'], (int) $post['post_id'], $pdo) ? 'liked' : 'unliked'; ?>">
                     <button class="like-btn" type="submit">
-                        <div class="<?php echo likedPost($user['id'], $post['post_id'], $pdo) ? 'like-img' : 'unlike-img'; ?>"></div>
+                        <div class="<?php echo likedPost((int) $_SESSION['user']['id'], (int) $post['post_id'], $pdo) ? 'like-img' : 'unlike-img'; ?>"></div>
                     </button>
                 </form>
             </div>
@@ -58,5 +56,3 @@ foreach (getAllPosts($pdo) as $post) :
         </div>
     </article>
 <?php endforeach; ?>
-
-<?php require __DIR__ . '/views/footer.php'; ?>

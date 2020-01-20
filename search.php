@@ -2,7 +2,6 @@
 <article>
 
     <form action="search.php" method="get">
-
         <div>
             <label for="search">Search for users</label>
             <input class="form-control" type="text" name="search"> </input>
