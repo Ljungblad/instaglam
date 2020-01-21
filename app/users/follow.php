@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+header('Content-Type: application/json');
+
 
 if (isset($_POST['profile'])) {
 
@@ -23,6 +25,18 @@ if (isset($_POST['profile'])) {
             ':user_id' => $userId,
             ':profile_id' => $profileId,
         ]);
+
+        //To fetch
+
+        $followers = followers($profileId, $pdo);
+
+        $json = ([
+            'followers' => 'Followers: ' . $followers,
+            'button' => 'Follow'
+        ]);
+
+        echo json_encode($json);
+        exit;
     } else {
 
         // Insert into database if user not following
@@ -36,7 +50,19 @@ if (isset($_POST['profile'])) {
             ':user_id' => $userId,
             ':profile_id' => $profileId,
         ]);
+
+        //To fetch
+
+        $followers = followers($profileId, $pdo);
+
+        $json = ([
+            'followers' => 'Followers: ' . $followers,
+            'button' => 'Unfollow'
+        ]);
+
+        echo json_encode($json);
+        exit;
     }
 }
 
-redirect('/../../view-profile.php?user_id=' . $profileId);
+// redirect('/../../view-profile.php?user_id=' . $profileId);

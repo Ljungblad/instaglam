@@ -31,7 +31,7 @@ $profileId = $_GET['user_id'];
 
 
     <?php $followers = followers($profileId, $pdo) ?>
-    <p>Followers: <?php echo $followers ?></p>
+    <p class="followers">Followers: <?php echo $followers ?></p>
 
     <?php $following = following($profileId, $pdo) ?>
     <p>Following: <?php echo $following ?> </p>

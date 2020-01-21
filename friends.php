@@ -56,3 +56,5 @@ foreach ($posts as $post) :
         </div>
     </article>
 <?php endforeach; ?>
+
+<?php require __DIR__ . '/views/footer.php'; ?>
