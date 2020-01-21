@@ -16,7 +16,7 @@ followingForm.forEach(form => {
         return response.json();
       })
       .then(json => {
-        const followBtn = event.target.querySelector(".followBtn");
+        const followBtn = event.target.querySelector(".follow-btn");
         const followers = document.querySelector(".followers");
 
         followBtn.textContent = json.button;

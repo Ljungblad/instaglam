@@ -42,7 +42,7 @@ $profileId = $_GET['user_id'];
 
             <input type="hidden" name="profile" value="<?php echo $profileId ?> ">
 
-            <button class="followBtn styled-btn" type="submit">
+            <button class="follow-btn" type="submit">
 
                 <?php if (isFollowing($_SESSION['user']['id'], $profileId, $pdo)) : ?>
 

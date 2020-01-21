@@ -1,12 +1,12 @@
 <?php require __DIR__ . '/views/header.php'; ?>
-<article>
-
-    <form action="search.php" method="get">
-        <div>
+<article class="search-page">
+    <h1 class="search-h1">Search</h1>
+    <form class="search-form" action="search.php" method="get">
+        <div class="search-container">
             <label for="search">Search for users</label>
             <input class="form-control" type="text" name="search"> </input>
         </div>
-        <button type="submit"> Search</button>
+        <button class="search-btn" type="submit"> Search</button>
     </form>
 
 

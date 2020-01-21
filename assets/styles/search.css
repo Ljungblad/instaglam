@@ -1,0 +1,31 @@
+.search-page {
+  display: flex;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+.search-container label {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.search-container input {
+  height: 36px;
+  width: 80vw;
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+}
+
+.search-btn {
+  height: 36px;
+  width: 20vw;
+  border: none;
+  border-radius: 5px;
+  background-color: #3f729b;
+  color: white;
+  font-size: 18px;
+}
