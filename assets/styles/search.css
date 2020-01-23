@@ -29,3 +29,25 @@
   color: white;
   font-size: 18px;
 }
+
+@media (min-width: 768px) {
+  .search-container input,
+  label {
+    width: 60vw;
+  }
+
+  .sign-up-btn {
+    width: 60vw;
+  }
+}
+
+@media (min-width: 1025px) {
+  .search-container input,
+  .search-container label {
+    width: 40vw;
+  }
+
+  .search-btn {
+    width: 40vw;
+  }
+}
