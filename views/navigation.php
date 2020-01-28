@@ -43,11 +43,5 @@
             </li>
         <?php endif; ?>
 
-        <?php if (isLoggedIn()) : ?>
-            <li class="nav-li">
-                <a href="/app/users/logout.php"><img class="nav-img" src="/icons/logout.svg" alt="Logout" loading="lazy"></a>
-            </li>
-        <?php endif; ?>
-
     </ul>
 </nav>

@@ -22,6 +22,7 @@ $user = getUserById($_SESSION['user']['id'], $pdo);
         <div class="profile-username-settings">
             <h1 class="profile-username"><?php echo $user['username'] ?></h1>
             <a href="/account.php"><img src="/icons/settings.svg" alt="Settings" loading="lazy"></a>
+            <a href="/app/users/logout.php"><img src="/icons/logout.svg" alt="Logout" loading="lazy"></a>
         </div>
         <p class="profile-biography-description"><?php echo $user['biography'] ?></p>
     </article>

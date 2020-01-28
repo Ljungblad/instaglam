@@ -23,12 +23,10 @@
         <?php foreach ($users as $user) : ?>
 
             <div class="post-creator">
-
                 <img class="post-profile-picture" src="<?php echo '/uploads/' . $user['profile_avatar']; ?>" alt="profile picture" loading="lazy">
                 <a href="<?php echo '/view-profile.php?user_id=' . $user['id'] ?>">
                     <h3 class="post-username"><?php echo $user['username']; ?></h3>
                 </a>
-
             </div>
         <?php endforeach; ?>
 
