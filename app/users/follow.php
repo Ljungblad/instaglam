@@ -14,7 +14,6 @@ if (isset($_POST['profile'])) {
 
     if (isFollowing($userId,  $profileId, $pdo)) {
 
-        // Delete from database if user already following
         $statement = $pdo->prepare('DELETE FROM following WHERE user = :user_id AND profile_id = :profile_id');
 
         if (!$statement) {
@@ -26,7 +25,6 @@ if (isset($_POST['profile'])) {
             ':profile_id' => $profileId,
         ]);
 
-        //To fetch
 
         $followers = followers($profileId, $pdo);
 
@@ -39,7 +37,6 @@ if (isset($_POST['profile'])) {
         exit;
     } else {
 
-        // Insert into database if user not following
         $statement = $pdo->prepare('INSERT INTO following (user, profile_id) VALUES (:user_id, :profile_id)');
 
         if (!$statement) {
@@ -51,7 +48,6 @@ if (isset($_POST['profile'])) {
             ':profile_id' => $profileId,
         ]);
 
-        //To fetch
 
         $followers = followers($profileId, $pdo);
 
@@ -64,5 +60,3 @@ if (isset($_POST['profile'])) {
         exit;
     }
 }
-
-// redirect('/../../view-profile.php?user_id=' . $profileId);

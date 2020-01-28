@@ -8,8 +8,7 @@ $posts = getPostFromFollowing($_SESSION['user']['id'], $pdo);
 
 <?php if (empty($posts)) : ?>
     <article class="no-posts-article">
-        <h1>You don't follow anyone yet.</h2>
-            <h2>Plz do</h2>
+        <p>You don't follow anyone yet.</p>
     </article>
 <?php endif; ?>
 
@@ -29,11 +28,7 @@ foreach ($posts as $post) :
                 <a href="<?php echo '/view-profile.php?user_id=' . $user['id'] ?>">
                     <h3 class="post-username"><?php echo $user['username']; ?></h3>
                 </a>
-                <!-- <?php if (isOwnerOfPost($post['user_id'], $user['id'])) : ?>
-                    <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id=' . $post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg" alt="edit" loading="lazy"></a>
-                <?php endif; ?> -->
             </div>
-
 
             <div class="post-content">
                 <img src="<?php echo '/uploads/' . $post['image']; ?>" alt="post image" loading="lazy">

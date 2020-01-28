@@ -368,11 +368,16 @@ function following(int $userId, PDO $pdo): string
     return $following;
 }
 
-
-function getPostFromFollowing($user, $pdo)
+/**
+ * Get all posts from a user a user follows
+ *
+ * @param int $user
+ * @param int $pdo
+ * @return array
+ */
+function getPostFromFollowing(int $user, pdo $pdo): array
 {
     $query = 'SELECT * FROM following INNER JOIN posts on profile_id = posts.user_id WHERE user = :user_id';
-    // $query = 'SELECT * FROM following INNER JOIN posts on profile_id = posts.author_id WHERE user_id = :user_id';
 
 
     $statement = $pdo->prepare($query);

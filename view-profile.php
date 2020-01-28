@@ -24,6 +24,7 @@ $profileId = $_GET['user_id'];
             <h1 class="profile-username"><?php echo $user['username'] ?></h1>
             <?php if (isOwnerOfProfile($user['id'], $loggedInUserId)) : ?>
                 <a href="/account.php"><img src="/icons/settings.svg" alt="Settings" loading="lazy"></a>
+                <a href="/app/users/logout.php"><img src="/icons/logout.svg" alt="Logout" loading="lazy"></a>
             <?php endif ?>
         </div>
         <p class="profile-biography-description"><?php echo $user['biography'] ?></p>

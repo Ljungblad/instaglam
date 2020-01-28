@@ -7,7 +7,6 @@ if (searchInput) {
     event.preventDefault();
 
     const search = document.getElementById("search-txt").value;
-    console.log(search);
     const resultUl = document.getElementById("search-result");
 
     fetch(`/app/users/search-user.php?search=${search}`, {
