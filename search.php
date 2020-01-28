@@ -1,15 +1,17 @@
 <?php require __DIR__ . '/views/header.php'; ?>
-<article>
+<article class="search-page">
 
-    <form action="search.php" method="get">
+    <h1 class="search-h1">Search</h1>
 
-        <div>
+    <form class="search-form" action="search.php" method="get">
+        <div class="search-container">
             <label for="search">Search for users</label>
-            <input class="form-control" type="text" name="search"> </input>
+            <input id="search-txt" class="form-control" type="text" name="search"> </input>
         </div>
-        <button type="submit"> Search</button>
+        <button class="search-btn" type="submit"> Search</button>
     </form>
 
+    <ul id="search-result"></ul>
 
     <?php if (isset($_GET['search'])) : ?>
         <?php $users = getUserFromSearch($_GET['search'], $pdo); ?>
@@ -21,17 +23,10 @@
         <?php foreach ($users as $user) : ?>
 
             <div class="post-creator">
-
                 <img class="post-profile-picture" src="<?php echo '/uploads/' . $user['profile_avatar']; ?>" alt="profile picture" loading="lazy">
                 <a href="<?php echo '/view-profile.php?user_id=' . $user['id'] ?>">
                     <h3 class="post-username"><?php echo $user['username']; ?></h3>
                 </a>
-
-
-                <!-- <?php if (isOwnerOfPost($user['user_id'], $user['id'])) : ?>
-                    <a class="post-creator-edit-link" href="<?php echo '/edit-post.php?post_id=' . $post['post_id']; ?>"><img class="link-edit-post" src="/icons/edit.svg" alt="edit" loading="lazy"></a>
-                <?php endif; ?> -->
-
             </div>
         <?php endforeach; ?>
 

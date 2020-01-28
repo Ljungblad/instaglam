@@ -33,13 +33,13 @@
 
         <?php if (isLoggedIn()) : ?>
             <li class="nav-li">
-                <a href="/profile.php"><img class="nav-img" src="/icons/profile.svg" alt="Profile" loading="lazy"></a>
+                <a href="/friends.php"><img class="nav-img" src="/icons/empty-heart.svg" alt="Friends" loading="lazy"></a>
             </li>
         <?php endif; ?>
 
         <?php if (isLoggedIn()) : ?>
             <li class="nav-li">
-                <a href="/app/users/logout.php"><img class="nav-img" src="/icons/logout.svg" alt="Logout" loading="lazy"></a>
+                <a href="/profile.php"><img class="nav-img" src="/icons/profile.svg" alt="Profile" loading="lazy"></a>
             </li>
         <?php endif; ?>
 
