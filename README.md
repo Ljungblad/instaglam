@@ -44,6 +44,14 @@ Instaglam (Picture This) - An Assignment in web development
 
 - As a user I should be able to remove likes from posts.
 
+## Extra features added by <a href="https://github.com/mikaelaalu"> Mikaela Lundsgård </a>
+
+-  As a user I'm able to search and see a list of users by query.
+
+-  As a user I'm able to to follow and unfollow users and see a list of posts by users I follow.
+
+View pull request <a href="https://github.com/Ljungblad/instaglam/commit/516176cd6744f9d94e030e2701c572b92cd0c9d3">here!</a> 
+
 
 ## Testers
 * [Julia Karlsson](https://github.com/Juljulia)
