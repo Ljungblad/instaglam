@@ -2,3 +2,4 @@ uploads/*
 !uploads/.gitkeep
 !uploads/default-profile-picture.jpg
 DS_Store
+.php_cs.cache
