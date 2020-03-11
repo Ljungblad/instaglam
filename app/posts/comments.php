@@ -14,7 +14,7 @@ if (isset($_POST['comment'], $_POST['post-id'])) {
 
     $user = (int) $_SESSION['user']['id'];
 
-    $statement = $pdo->prepare ('INSERT INTO comments (post_id, comment_by, comment, date)
+    $statement = $pdo->prepare('INSERT INTO comments (post_id, comment_by, comment, date)
     VALUES (:post_id, :comment_by, :comment, :date)');
 
     if (!$statement) {
