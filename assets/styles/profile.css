@@ -11,6 +11,16 @@ button {
   margin: 5px;
 }
 
+.follow-btn {
+  height: 36px;
+  width: 50vw;
+  border: none;
+  border-radius: 5px;
+  background-color: #3f729b;
+  color: white;
+  font-size: 18px;
+}
+
 .profile-top-section {
   display: flex;
   flex-direction: row;

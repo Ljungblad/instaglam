@@ -1,19 +1,21 @@
 <?php
-    require __DIR__.'/views/header.php';
-    require __DIR__.'/views/login-wall.php';
-    $user = getUserById($_SESSION['user']['id'], $pdo);
+require __DIR__ . '/views/header.php';
+require __DIR__ . '/views/login-wall.php';
+$user = getUserById($_SESSION['user']['id'], $pdo);
 ?>
 
 <article>
     <h1 class="account-h1">Account Settings</h1>
 
-    <?php require __DIR__.'/views/error.php'; ?>
-    <?php require __DIR__.'/views/success.php'; ?>
+    <?php require __DIR__ . '/views/error.php'; ?>
+    <?php require __DIR__ . '/views/success.php'; ?>
 
     <form class="account-form" action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
         <label class="account-label" for="profile_picture">Edit your profile picture</label>
         <div class="upload-btn-wrapper">
-            <button class="upload-btn"><img class="account-upload-icon" src="/icons/folder.svg" loading="lazy"><p>Select a file</p></button>
+            <button class="upload-btn"><img class="account-upload-icon" src="/icons/folder.svg" loading="lazy">
+                <p>Select a file</p>
+            </button>
             <input type="file" name="profile_picture">
         </div>
         <button class="account-btn" type="submit">Upload profile picture</button>
@@ -66,4 +68,4 @@
 
 </article>
 
-<?php require __DIR__.'/views/footer.php'; ?>
+<?php require __DIR__ . '/views/footer.php'; ?>

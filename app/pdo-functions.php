@@ -101,7 +101,7 @@ function getAllUsersPosts(int $userId, PDO $pdo): array
     }
     $statement->execute([
         ':user_id' => $userId
-        ]);
+    ]);
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $posts;
 }
@@ -147,7 +147,7 @@ function getImageNameById(int $userId, int $postId, PDO $pdo): array
     $statement->execute([
         ':user_id' => $userId,
         ':post_id' => $postId,
-        ]);
+    ]);
     $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
     return $currentPostImage;
 }
@@ -167,9 +167,9 @@ function countLikes(int $postId, PDO $pdo): int
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
-    return (int)$likes['COUNT(*)'];
+    return (int) $likes['COUNT(*)'];
 }
 
 /**
@@ -189,7 +189,7 @@ function likedPost(int $userId, int $postId, PDO $pdo): bool
     $statement->execute([
         ':user_id' => $userId,
         ':post_id' => $postId,
-        ]);
+    ]);
     $like = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($like !== false) {
@@ -214,7 +214,7 @@ function getUserIdByPostId(int $postId, PDO $pdo): array
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $userId = $statement->fetch(PDO::FETCH_ASSOC);
     return $userId;
 }
@@ -234,7 +234,7 @@ function postExist(int $postId, PDO $pdo): bool
     }
     $statement->execute([
         ':post_id' => $postId,
-        ]);
+    ]);
     $post = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($post) {
@@ -259,7 +259,7 @@ function profileExist(int $userId, PDO $pdo): bool
     }
     $statement->execute([
         ':user_id' => $userId,
-        ]);
+    ]);
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
@@ -267,4 +267,130 @@ function profileExist(int $userId, PDO $pdo): bool
     } else {
         return false;
     }
+}
+
+/**
+ * Get search result from search form
+ *
+ * @param string $search
+ * @param PDO $pdo
+ * @return array
+ */
+function getUserFromSearch(string $search, PDO $pdo): array
+{
+
+    $search = trim(filter_var($_GET['search'], FILTER_SANITIZE_STRING));
+    $search = '%' . $search . '%';
+
+
+    $statement = $pdo->prepare('SELECT username, id, profile_avatar FROM users WHERE username LIKE :search');
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+
+    $statement->bindParam(':search', $search, PDO::PARAM_STR);
+
+    $statement->execute();
+    $usersFromSearch = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $usersFromSearch;
+}
+
+/**
+ * Check in databse if user following a profile, if user does return true, else return false.
+ *
+ * @param integer $userId
+ * @param integer $profileId
+ * @param PDO $pdo
+ * @return boolean
+ */
+function isFollowing(int $userId, int $profileId, PDO $pdo): bool
+{
+    $query = 'SELECT * FROM following WHERE user = :user_id AND profile_id = :profile_id';
+    $statement = $pdo->prepare($query);
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':user_id' => $userId,
+        ':profile_id' => $profileId
+    ]);
+    $following = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($following) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+/**
+ * Check how many followers one profile have
+ *
+ * @param integer $profileId
+ * @param PDO $pdo
+ * @return string
+ */
+function followers(int $profileId, PDO $pdo): string
+{
+    $query = 'SELECT COUNT(*) FROM following WHERE profile_id = :profile_id';
+    $statement = $pdo->prepare($query);
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':profile_id' => $profileId
+    ]);
+    $followers = $statement->fetch()[0];
+    return $followers;
+}
+
+
+/**
+ * Check how many users one user follow
+ *
+ * @param integer $userId
+ * @param PDO $pdo
+ * @return string
+ */
+function following(int $userId, PDO $pdo): string
+{
+    $query = 'SELECT COUNT(*) FROM following WHERE user = :user_id';
+    $statement = $pdo->prepare($query);
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+    $statement->execute([
+        ':user_id' => $userId
+    ]);
+    $following = $statement->fetch()[0];
+    return $following;
+}
+
+/**
+ * Get all posts from a user a user follows
+ *
+ * @param int $user
+ * @param int $pdo
+ * @return array
+ */
+function getPostFromFollowing(int $user, pdo $pdo): array
+{
+    $query = 'SELECT * FROM following INNER JOIN posts on profile_id = posts.user_id WHERE user = :user_id';
+
+
+    $statement = $pdo->prepare($query);
+
+    if (!$statement) {
+        die(var_dump($pdo->errorInfo()));
+    }
+
+    $statement->execute([
+        ':user_id' => $user
+    ]);
+
+    $following = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    return $following;
 }
