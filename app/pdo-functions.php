@@ -114,7 +114,8 @@ function getAllUsersPosts(int $userId, PDO $pdo): array
  * @param PDO $pdo
  * @return array
  */
-function getPostById(int $postId, int $userId, PDO $pdo): array {
+function getPostById(int $postId, int $userId, PDO $pdo): array
+{
     $statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users on posts.user_id = users.id WHERE id = :user_id AND post_id = :post_id');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));

@@ -17,48 +17,47 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
             redirect('/../../registration.php');
         }
 
-            // Collects and sanitize all the form data
-            $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
-            $firstName = trim(filter_var($_POST['first_name'], FILTER_SANITIZE_STRING));
-            $lastName = trim(filter_var($_POST['last_name'], FILTER_SANITIZE_STRING));
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $profilePicture = 'default-profile-picture.jpg';
+        // Collects and sanitize all the form data
+        $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
+        $firstName = trim(filter_var($_POST['first_name'], FILTER_SANITIZE_STRING));
+        $lastName = trim(filter_var($_POST['last_name'], FILTER_SANITIZE_STRING));
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $profilePicture = 'default-profile-picture.jpg';
 
-            // Checking if the username is in use
-            $user = getUserByUsername($username, $pdo);
-            if (!empty($user)) {
-                $_SESSION['error'] = "This username is already taken, pick another one!";
-                redirect('/../../registration.php');
-            }
+        // Checking if the username is in use
+        $user = getUserByUsername($username, $pdo);
+        if (!empty($user)) {
+            $_SESSION['error'] = "This username is already taken, pick another one!";
+            redirect('/../../registration.php');
+        }
 
-            // Checking if the email address is in use
-            $user = getUserByEmail($email, $pdo);
-            if (!empty($user)) {
-                $_SESSION['error'] = "This email is already in use!";
-                redirect('/../../registration.php');
-            }
+        // Checking if the email address is in use
+        $user = getUserByEmail($email, $pdo);
+        if (!empty($user)) {
+            $_SESSION['error'] = "This email is already in use!";
+            redirect('/../../registration.php');
+        }
 
-            // Inserts all the form data to the database
-            $statement = $pdo->query('SELECT * FROM users');
-            $users = $statement->fetchAll(PDO::FETCH_ASSOC);
-            $query = 'INSERT INTO users (username, first_name, last_name, email, password, profile_avatar) VALUES (:username, :first_name, :last_name, :email, :password, :profile_avatar)';
-            $statement = $pdo->prepare($query);
-            if (!$statement) {
-                die(var_dump($pdo->errorInfo()));
-            }
-            $statement->bindParam(':username', $username, PDO::PARAM_STR);
-            $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
-            $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
-            $statement->bindParam(':email', $email, PDO::PARAM_STR);
-            $statement->bindParam(':password', $password, PDO::PARAM_STR);
-            $statement->bindParam(':profile_avatar', $profilePicture, PDO::PARAM_STR);
-            $statement->execute();
+        // Inserts all the form data to the database
+        $statement = $pdo->query('SELECT * FROM users');
+        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $query = 'INSERT INTO users (username, first_name, last_name, email, password, profile_avatar) VALUES (:username, :first_name, :last_name, :email, :password, :profile_avatar)';
+        $statement = $pdo->prepare($query);
+        if (!$statement) {
+            die(var_dump($pdo->errorInfo()));
+        }
+        $statement->bindParam(':username', $username, PDO::PARAM_STR);
+        $statement->bindParam(':first_name', $firstName, PDO::PARAM_STR);
+        $statement->bindParam(':last_name', $lastName, PDO::PARAM_STR);
+        $statement->bindParam(':email', $email, PDO::PARAM_STR);
+        $statement->bindParam(':password', $password, PDO::PARAM_STR);
+        $statement->bindParam(':profile_avatar', $profilePicture, PDO::PARAM_STR);
+        $statement->execute();
 
-            // Get the user from the database and starts a new session for the user
-            $user = getUserByUsername($username, $pdo);
-            $_SESSION['user'] = $user;
-            redirect('/../../feed.php');
-
+        // Get the user from the database and starts a new session for the user
+        $user = getUserByUsername($username, $pdo);
+        $_SESSION['user'] = $user;
+        redirect('/../../feed.php');
     } else {
         // If the passwords does not match
         $_SESSION['error'] = "The two passwords do not match";

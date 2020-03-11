@@ -2,4 +2,3 @@
 if (!isLoggedIn()) {
     redirect('/');
 }
-?>

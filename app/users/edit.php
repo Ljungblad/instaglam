@@ -24,9 +24,9 @@ if (isset($_POST['edit_biography'])) {
             ':id' => $id,
             ':biography' => $biography,
             ]);
-            $_SESSION['user']['biography'] = $biography;
-            $_SESSION['success'] = 'Your biography was successfully updated';
-            redirect('/../../account.php');
+        $_SESSION['user']['biography'] = $biography;
+        $_SESSION['success'] = 'Your biography was successfully updated';
+        redirect('/../../account.php');
     }
 }
 
@@ -34,7 +34,7 @@ if (isset($_POST['edit_biography'])) {
 if (isset($_POST['edit_email'])) {
 
     //Checking if all variables are set
-    if (isset($_POST['email'], $_POST['new_email'] )) {
+    if (isset($_POST['email'], $_POST['new_email'])) {
 
         // Checking if the email address is valid
         $email = trim(strtolower(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
@@ -73,9 +73,9 @@ if (isset($_POST['edit_email'])) {
         ':newEmail' => $newEmail,
         ':email' => $email,
     ]);
-    $_SESSION['user']['email'] = $newEmail;
-    $_SESSION['success'] = 'Your email was successfully updated';
-    redirect('/../../account.php');
+        $_SESSION['user']['email'] = $newEmail;
+        $_SESSION['success'] = 'Your email was successfully updated';
+        redirect('/../../account.php');
     }
 }
 

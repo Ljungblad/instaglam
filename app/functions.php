@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-if (!function_exists('redirect'))
-{
+if (!function_exists('redirect')) {
     /**
      * Redirect the user to given path.
      *
@@ -34,7 +33,7 @@ function isLoggedIn()
  */
 function displayError()
 {
-        return isset($_SESSION['error']);
+    return isset($_SESSION['error']);
 }
 
 /**
@@ -44,7 +43,7 @@ function displayError()
  */
 function displaySuccess()
 {
-        return isset($_SESSION['success']);
+    return isset($_SESSION['success']);
 }
 
 /**
@@ -66,6 +65,7 @@ function isOwnerOfPost(int $postUserId, int $userId): bool
  * @param int $loggedInUserId
  * @return bool
  */
-function isOwnerOfProfile(int $profileUserId, int $loggedInUserId): bool {
+function isOwnerOfProfile(int $profileUserId, int $loggedInUserId): bool
+{
     return $profileUserId === $loggedInUserId;
 }

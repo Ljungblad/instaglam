@@ -27,46 +27,45 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
     if ($imageSize > 0) {
 
     // Checking if the uploaded image has the right format
-    if (in_array($imageActualExt, $allowed)) {
+        if (in_array($imageActualExt, $allowed)) {
 
         // Checking if there was no errors while uploading the image
-        if ($imageError === 0) {
+            if ($imageError === 0) {
 
             // Checking if the uploaded image has the right file size
-            if ($imageSize < 3145728) {
+                if ($imageSize < 3145728) {
+                    $imageNameNew = time().".".$userId.".".$imageActualExt;
+                    $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
+                    move_uploaded_file($imageTmpName, $imageDestination);
 
-                $imageNameNew = time().".".$userId.".".$imageActualExt;
-                $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
-                move_uploaded_file($imageTmpName, $imageDestination);
+                    // Get the name of the current post image
+                    $currentPostImage = getImageNameById($userId, $postId, $pdo);
 
-                // Get the name of the current post image
-                $currentPostImage = getImageNameById($userId, $postId, $pdo);
-
-                // Updates the image in the database
-                $statement = $pdo->prepare('UPDATE posts SET image = :image WHERE post_id = :post_id AND user_id = :user_id');
-                if (!$statement) {
-                    die(var_dump($pdo->errorInfo()));
-                }
-                $statement->execute([
+                    // Updates the image in the database
+                    $statement = $pdo->prepare('UPDATE posts SET image = :image WHERE post_id = :post_id AND user_id = :user_id');
+                    if (!$statement) {
+                        die(var_dump($pdo->errorInfo()));
+                    }
+                    $statement->execute([
                     ':image' => $imageNameNew,
                     ':user_id' => $userId,
                     ':post_id' => $postId,
                     ]);
 
-                // Removes the previous image from the uploads folder
-                if ($currentPostImage['image'] !== NULL) {
-                    unlink(__DIR__."/../../uploads/".$currentPostImage['image']);
+                    // Removes the previous image from the uploads folder
+                    if ($currentPostImage['image'] !== null) {
+                        unlink(__DIR__."/../../uploads/".$currentPostImage['image']);
+                    }
+                    $_SESSION['success'] = 'Your post was successfully updated!';
+                } else {
+                    $_SESSION['error'] = 'Your image is too big!';
                 }
-                $_SESSION['success'] = 'Your post was successfully updated!';
             } else {
-                $_SESSION['error'] = 'Your image is too big!';
+                $_SESSION['error'] = 'There was an error uploading your image!';
             }
         } else {
-            $_SESSION['error'] = 'There was an error uploading your image!';
+            $_SESSION['error'] = 'You cannot upload this type of file!';
         }
-    } else {
-        $_SESSION['error'] = 'You cannot upload this type of file!';
-    }
     }
 }
 

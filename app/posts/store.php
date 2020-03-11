@@ -32,7 +32,6 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
 
             // Checking if the uploaded file has the right file size
             if ($imageSize < 3145728) {
-
                 $imageNameNew = time().".".$id.".".$imageActualExt;
                 $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
                 move_uploaded_file($imageTmpName, $imageDestination);
@@ -56,7 +55,6 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
         } else {
             $_SESSION['error'] = 'There was an error uploading your file!';
         }
-
     } else {
         $_SESSION['error'] = 'You cannot upload this type of file!';
     }

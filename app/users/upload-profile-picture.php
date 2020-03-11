@@ -32,7 +32,6 @@ if (isset($_FILES['profile_picture'])) {
 
             // Checking if the uploaded file has the right file size
             if ($fileSize < 3145728) {
-
                 $fileNameNew = time().".".$id.".".$fileActualExt;
                 $fileDestination = __DIR__.'/../../uploads/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
