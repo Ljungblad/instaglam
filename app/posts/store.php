@@ -22,7 +22,7 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
     $imageExt = explode('.', $imageName);
     $imageActualExt = strtolower(end($imageExt));
     $allowed = ['jpg', 'jpeg', 'png'];
-    $date = date("ydm-His");
+    $date = date('ydm-His');
 
     // Checking if the uploaded file has the right format
     if (in_array($imageActualExt, $allowed)) {
@@ -32,7 +32,7 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
 
             // Checking if the uploaded file has the right file size
             if ($imageSize < 3145728) {
-                $imageNameNew = time().".".$id.".".$imageActualExt;
+                $imageNameNew = time().'.'.$id.'.'.$imageActualExt;
                 $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
                 move_uploaded_file($imageTmpName, $imageDestination);
 
@@ -42,11 +42,11 @@ if (isset($_FILES['post_image'], $_POST['post_content'])) {
                     die(var_dump($pdo->errorInfo()));
                 }
                 $statement->execute([
-                    ':user_id' => $id,
-                    ':content' => $content,
-                    ':image' => $imageNameNew,
+                    ':user_id'      => $id,
+                    ':content'      => $content,
+                    ':image'        => $imageNameNew,
                     ':date_created' => $date,
-                    ]);
+                ]);
                 $_SESSION['success'] = 'Your post was successfully uploaded';
                 redirect('/../../feed.php');
             } else {

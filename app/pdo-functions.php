@@ -3,10 +3,11 @@
 declare(strict_types=1);
 
 /**
- * Collects the username from the database
+ * Collects the username from the database.
  *
  * @param string $username
- * @param PDO $pdo
+ * @param PDO    $pdo
+ *
  * @return array
  */
 function getUserByUsername(string $username, PDO $pdo): array
@@ -21,14 +22,16 @@ function getUserByUsername(string $username, PDO $pdo): array
     if ($user) {
         return $user;
     }
+
     return $user = [];
 }
 
 /**
- * Collects the email from the database
+ * Collects the email from the database.
  *
  * @param string $email
- * @param PDO $pdo
+ * @param PDO    $pdo
+ *
  * @return array
  */
 function getUserByEmail(string $email, PDO $pdo): array
@@ -43,15 +46,16 @@ function getUserByEmail(string $email, PDO $pdo): array
     if ($user) {
         return $user;
     }
+
     return $user = [];
 }
 
-
 /**
- * Collects the id from the database
+ * Collects the id from the database.
  *
  * @param int $id
  * @param PDO $pdo
+ *
  * @return array
  */
 function getUserById(int $id, PDO $pdo): array
@@ -66,13 +70,15 @@ function getUserById(int $id, PDO $pdo): array
     if ($user) {
         return $user;
     }
+
     return $user = [];
 }
 
 /**
- * Collects all posts from the database
+ * Collects all posts from the database.
  *
  * @param PDO $pdo
+ *
  * @return array
  */
 function getAllPosts(PDO $pdo): array
@@ -83,14 +89,16 @@ function getAllPosts(PDO $pdo): array
     }
     $statement->execute();
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     return $posts;
 }
 
 /**
- * Collects all posts from one user
+ * Collects all posts from one user.
  *
  * @param int $userId
  * @param PDO $pdo
+ *
  * @return array
  */
 function getAllUsersPosts(int $userId, PDO $pdo): array
@@ -100,18 +108,20 @@ function getAllUsersPosts(int $userId, PDO $pdo): array
         die(var_dump($pdo->errorInfo()));
     }
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
     $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
     return $posts;
 }
 
 /**
- * Collects all posts from a specific user and all their user-information
+ * Collects all posts from a specific user and all their user-information.
  *
  * @param int $postId
  * @param int $userId
  * @param PDO $pdo
+ *
  * @return array
  */
 function getPostById(int $postId, int $userId, PDO $pdo): array
@@ -127,15 +137,17 @@ function getPostById(int $postId, int $userId, PDO $pdo): array
     if ($post) {
         return $post;
     }
+
     return $post = [];
 }
 
 /**
- * Collect the name of the post image
+ * Collect the name of the post image.
  *
  * @param int $userId
  * @param int $postId
  * @param PDO $pdo
+ *
  * @return array
  */
 function getImageNameById(int $userId, int $postId, PDO $pdo): array
@@ -149,14 +161,16 @@ function getImageNameById(int $userId, int $postId, PDO $pdo): array
         ':post_id' => $postId,
     ]);
     $currentPostImage = $statement->fetch(PDO::FETCH_ASSOC);
+
     return $currentPostImage;
 }
 
 /**
- * Counts the numbers of likes on a post
+ * Counts the numbers of likes on a post.
  *
  * @param int $postId
  * @param PDO $pdo
+ *
  * @return int
  */
 function countLikes(int $postId, PDO $pdo): int
@@ -169,15 +183,17 @@ function countLikes(int $postId, PDO $pdo): int
         ':post_id' => $postId,
     ]);
     $likes = $statement->fetch(PDO::FETCH_ASSOC);
+
     return (int) $likes['COUNT(*)'];
 }
 
 /**
- * Checking if the post is liked or not
+ * Checking if the post is liked or not.
  *
  * @param int $userId
  * @param int $postId
  * @param PDO $pdo
+ *
  * @return bool
  */
 function likedPost(int $userId, int $postId, PDO $pdo): bool
@@ -200,10 +216,11 @@ function likedPost(int $userId, int $postId, PDO $pdo): bool
 }
 
 /**
- * Collects the user id of the posts creator (along with other post information)
+ * Collects the user id of the posts creator (along with other post information).
  *
  * @param int $postId
  * @param PDO $pdo
+ *
  * @return array
  */
 function getUserIdByPostId(int $postId, PDO $pdo): array
@@ -216,14 +233,16 @@ function getUserIdByPostId(int $postId, PDO $pdo): array
         ':post_id' => $postId,
     ]);
     $userId = $statement->fetch(PDO::FETCH_ASSOC);
+
     return $userId;
 }
 
 /**
- * Checking if the post exist in the database
+ * Checking if the post exist in the database.
  *
  * @param int $postId
  * @param PDO $pdo
+ *
  * @return bool
  */
 function postExist(int $postId, PDO $pdo): bool
@@ -245,10 +264,11 @@ function postExist(int $postId, PDO $pdo): bool
 }
 
 /**
- * Checking if the user exist in the database
+ * Checking if the user exist in the database.
  *
  * @param int $userId
  * @param PDO $pdo
+ *
  * @return bool
  */
 function profileExist(int $userId, PDO $pdo): bool
@@ -270,24 +290,22 @@ function profileExist(int $userId, PDO $pdo): bool
 }
 
 /**
- * Get search result from search form
+ * Get search result from search form.
  *
  * @param string $search
- * @param PDO $pdo
+ * @param PDO    $pdo
+ *
  * @return array
  */
 function getUserFromSearch(string $search, PDO $pdo): array
 {
-
     $search = trim(filter_var($_GET['search'], FILTER_SANITIZE_STRING));
-    $search = '%' . $search . '%';
-
+    $search = '%'.$search.'%';
 
     $statement = $pdo->prepare('SELECT username, id, profile_avatar FROM users WHERE username LIKE :search');
     if (!$statement) {
         die(var_dump($pdo->errorInfo()));
     }
-
 
     $statement->bindParam(':search', $search, PDO::PARAM_STR);
 
@@ -300,10 +318,11 @@ function getUserFromSearch(string $search, PDO $pdo): array
 /**
  * Check in databse if user following a profile, if user does return true, else return false.
  *
- * @param integer $userId
- * @param integer $profileId
+ * @param int $userId
+ * @param int $profileId
  * @param PDO $pdo
- * @return boolean
+ *
+ * @return bool
  */
 function isFollowing(int $userId, int $profileId, PDO $pdo): bool
 {
@@ -313,8 +332,8 @@ function isFollowing(int $userId, int $profileId, PDO $pdo): bool
         die(var_dump($pdo->errorInfo()));
     }
     $statement->execute([
-        ':user_id' => $userId,
-        ':profile_id' => $profileId
+        ':user_id'    => $userId,
+        ':profile_id' => $profileId,
     ]);
     $following = $statement->fetch(PDO::FETCH_ASSOC);
     if ($following) {
@@ -324,12 +343,12 @@ function isFollowing(int $userId, int $profileId, PDO $pdo): bool
     }
 }
 
-
 /**
- * Check how many followers one profile have
+ * Check how many followers one profile have.
  *
- * @param integer $profileId
+ * @param int $profileId
  * @param PDO $pdo
+ *
  * @return string
  */
 function followers(int $profileId, PDO $pdo): string
@@ -340,18 +359,19 @@ function followers(int $profileId, PDO $pdo): string
         die(var_dump($pdo->errorInfo()));
     }
     $statement->execute([
-        ':profile_id' => $profileId
+        ':profile_id' => $profileId,
     ]);
     $followers = $statement->fetch()[0];
+
     return $followers;
 }
 
-
 /**
- * Check how many users one user follow
+ * Check how many users one user follow.
  *
- * @param integer $userId
+ * @param int $userId
  * @param PDO $pdo
+ *
  * @return string
  */
 function following(int $userId, PDO $pdo): string
@@ -362,23 +382,24 @@ function following(int $userId, PDO $pdo): string
         die(var_dump($pdo->errorInfo()));
     }
     $statement->execute([
-        ':user_id' => $userId
+        ':user_id' => $userId,
     ]);
     $following = $statement->fetch()[0];
+
     return $following;
 }
 
 /**
- * Get all posts from a user a user follows
+ * Get all posts from a user a user follows.
  *
  * @param int $user
  * @param int $pdo
+ *
  * @return array
  */
 function getPostFromFollowing(int $user, pdo $pdo): array
 {
     $query = 'SELECT * FROM following INNER JOIN posts on profile_id = posts.user_id WHERE user = :user_id';
-
 
     $statement = $pdo->prepare($query);
 
@@ -387,7 +408,7 @@ function getPostFromFollowing(int $user, pdo $pdo): array
     }
 
     $statement->execute([
-        ':user_id' => $user
+        ':user_id' => $user,
     ]);
 
     $following = $statement->fetchAll(PDO::FETCH_ASSOC);

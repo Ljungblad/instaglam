@@ -20,7 +20,7 @@ if (isset($_POST['post_id'])) {
     $statement->execute([
         ':user_id' => $userId,
         ':post_id' => $postId,
-        ]);
+    ]);
 
     // Returns the number of likes on the current post
     $likes = countLikes($postId, $pdo);
