@@ -1,5 +1,7 @@
 <img src="https://media.giphy.com/media/3E2PjzNzMVCwrXnXwC/giphy.gif" width="100%">
 
+[![StyleCI](https://github.styleci.io/repos/226888741/shield?branch=master)](https://github.styleci.io/repos/226888741)
+
 # Instaglam
 Instaglam (Picture This) - An Assignment in web development
 
