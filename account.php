@@ -1,14 +1,14 @@
 <?php
-require __DIR__ . '/views/header.php';
-require __DIR__ . '/views/login-wall.php';
+require __DIR__.'/views/header.php';
+require __DIR__.'/views/login-wall.php';
 $user = getUserById($_SESSION['user']['id'], $pdo);
 ?>
 
 <article>
     <h1 class="account-h1">Account Settings</h1>
 
-    <?php require __DIR__ . '/views/error.php'; ?>
-    <?php require __DIR__ . '/views/success.php'; ?>
+    <?php require __DIR__.'/views/error.php'; ?>
+    <?php require __DIR__.'/views/success.php'; ?>
 
     <form class="account-form" action="app/users/upload-profile-picture.php" method="POST" enctype="multipart/form-data">
         <label class="account-label" for="profile_picture">Edit your profile picture</label>
@@ -68,4 +68,4 @@ $user = getUserById($_SESSION['user']['id'], $pdo);
 
 </article>
 
-<?php require __DIR__ . '/views/footer.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>

@@ -8,7 +8,6 @@ if (!isLoggedIn()) {
     redirect('/');
 }
 
-
 if (isset($_FILES['profile_picture'])) {
     $file = $_FILES['profile_picture'];
     $user = getUserById(intval($_SESSION['user']['id']), $pdo);
@@ -32,7 +31,7 @@ if (isset($_FILES['profile_picture'])) {
 
             // Checking if the uploaded file has the right file size
             if ($fileSize < 3145728) {
-                $fileNameNew = time().".".$id.".".$fileActualExt;
+                $fileNameNew = time().'.'.$id.'.'.$fileActualExt;
                 $fileDestination = __DIR__.'/../../uploads/'.$fileNameNew;
                 move_uploaded_file($fileTmpName, $fileDestination);
 
@@ -42,12 +41,12 @@ if (isset($_FILES['profile_picture'])) {
                     die(var_dump($pdo->errorInfo()));
                 }
                 $statement->execute([
-                    ':id' => $id,
+                    ':id'             => $id,
                     ':profile_avatar' => $fileNameNew,
-                    ]);
+                ]);
 
                 if ($currentProfilePicture !== 'default-profile-picture.jpg') {
-                    unlink(__DIR__."/../../uploads/".$currentProfilePicture);
+                    unlink(__DIR__.'/../../uploads/'.$currentProfilePicture);
                 }
 
                 // $_SESSION['user']['profile_avatar'] = $fileNameNew;
