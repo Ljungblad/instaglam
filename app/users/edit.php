@@ -21,9 +21,9 @@ if (isset($_POST['edit_biography'])) {
             die(var_dump($pdo->errorInfo()));
         }
         $statement->execute([
-            ':id' => $id,
+            ':id'        => $id,
             ':biography' => $biography,
-            ]);
+        ]);
         $_SESSION['user']['biography'] = $biography;
         $_SESSION['success'] = 'Your biography was successfully updated';
         redirect('/../../account.php');
@@ -39,28 +39,28 @@ if (isset($_POST['edit_email'])) {
         // Checking if the email address is valid
         $email = trim(strtolower(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = "The email address is not valid!";
+            $_SESSION['error'] = 'The email address is not valid!';
             redirect('/../../account.php');
         }
 
         // Checking if the current email address is correct
         $user = getUserByEmail($email, $pdo);
         if (empty($user)) {
-            $_SESSION['error'] = "This email does not exist!";
+            $_SESSION['error'] = 'This email does not exist!';
             redirect('/../../account.php');
         }
 
         // Checking if the new email address is valid
         $newEmail = trim(strtolower(filter_var($_POST['new_email'], FILTER_SANITIZE_EMAIL)));
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = "The email address is not valid!";
+            $_SESSION['error'] = 'The email address is not valid!';
             redirect('/../../account.php');
         }
 
         // Checking if the new email address is in use
         $user = getUserByEmail($newEmail, $pdo);
         if (!empty($user)) {
-            $_SESSION['error'] = "This email is already in use!";
+            $_SESSION['error'] = 'This email is already in use!';
             redirect('/../../account.php');
         }
 
@@ -70,9 +70,9 @@ if (isset($_POST['edit_email'])) {
             die(var_dump($pdo->errorInfo()));
         }
         $statement->execute([
-        ':newEmail' => $newEmail,
-        ':email' => $email,
-    ]);
+            ':newEmail' => $newEmail,
+            ':email'    => $email,
+        ]);
         $_SESSION['user']['email'] = $newEmail;
         $_SESSION['success'] = 'Your email was successfully updated';
         redirect('/../../account.php');
@@ -102,8 +102,8 @@ if (isset($_POST['edit_password'])) {
                     die(var_dump($pdo->errorInfo()));
                 }
                 $statement->execute([
-                ':password' => $newPassword,
-                ':id' => $id,
+                    ':password' => $newPassword,
+                    ':id'       => $id,
                 ]);
                 $_SESSION['success'] = 'Your password was successfully updated';
                 unset($user['password']);
@@ -114,7 +114,7 @@ if (isset($_POST['edit_password'])) {
             }
         } else {
             // If the passwords does not match
-            $_SESSION['error'] = "The two passwords do not match";
+            $_SESSION['error'] = 'The two passwords do not match';
             redirect('/../../account.php');
         }
     }

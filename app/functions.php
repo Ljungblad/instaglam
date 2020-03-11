@@ -7,6 +7,7 @@ if (!function_exists('redirect')) {
      * Redirect the user to given path.
      *
      * @param string $path
+     *
      * @return void
      */
     function redirect(string $path)
@@ -17,9 +18,9 @@ if (!function_exists('redirect')) {
 }
 
 /**
- * Checks if the user is logged in
+ * Checks if the user is logged in.
  *
- * @return boolean
+ * @return bool
  */
 function isLoggedIn()
 {
@@ -27,7 +28,7 @@ function isLoggedIn()
 }
 
 /**
- * Displays error messages
+ * Displays error messages.
  *
  * @return void
  */
@@ -37,7 +38,7 @@ function displayError()
 }
 
 /**
- * Displays success messages
+ * Displays success messages.
  *
  * @return void
  */
@@ -47,10 +48,11 @@ function displaySuccess()
 }
 
 /**
- * Checking if the user is the owner of the post
+ * Checking if the user is the owner of the post.
  *
  * @param int $postUserId
  * @param int $userId
+ *
  * @return bool
  */
 function isOwnerOfPost(int $postUserId, int $userId): bool
@@ -59,10 +61,11 @@ function isOwnerOfPost(int $postUserId, int $userId): bool
 }
 
 /**
- * Checking if the logged in user is the owner of visited profile
+ * Checking if the logged in user is the owner of visited profile.
  *
  * @param int $profileUserId
  * @param int $loggedInUserId
+ *
  * @return bool
  */
 function isOwnerOfProfile(int $profileUserId, int $loggedInUserId): bool

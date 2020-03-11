@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../app/autoload.php'; ?>
+<?php require_once __DIR__.'/../app/autoload.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,5 +25,5 @@
 </head>
 
 <body>
-    <?php require __DIR__ . '/navigation.php'; ?>
+    <?php require __DIR__.'/navigation.php'; ?>
     <div class="page-wrapper">

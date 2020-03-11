@@ -13,7 +13,7 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
         // Checking if the email address is valid
         $email = trim(strtolower(filter_var($_POST['email'], FILTER_SANITIZE_EMAIL)));
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $_SESSION['error'] = "The email address is not valid!";
+            $_SESSION['error'] = 'The email address is not valid!';
             redirect('/../../registration.php');
         }
 
@@ -27,14 +27,14 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
         // Checking if the username is in use
         $user = getUserByUsername($username, $pdo);
         if (!empty($user)) {
-            $_SESSION['error'] = "This username is already taken, pick another one!";
+            $_SESSION['error'] = 'This username is already taken, pick another one!';
             redirect('/../../registration.php');
         }
 
         // Checking if the email address is in use
         $user = getUserByEmail($email, $pdo);
         if (!empty($user)) {
-            $_SESSION['error'] = "This email is already in use!";
+            $_SESSION['error'] = 'This email is already in use!';
             redirect('/../../registration.php');
         }
 
@@ -60,7 +60,7 @@ if (isset($_POST['username'], $_POST['first_name'], $_POST['last_name'], $_POST[
         redirect('/../../feed.php');
     } else {
         // If the passwords does not match
-        $_SESSION['error'] = "The two passwords do not match";
+        $_SESSION['error'] = 'The two passwords do not match';
     }
     redirect('/../../registration.php');
 }

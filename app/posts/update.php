@@ -34,7 +34,7 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
 
             // Checking if the uploaded image has the right file size
                 if ($imageSize < 3145728) {
-                    $imageNameNew = time().".".$userId.".".$imageActualExt;
+                    $imageNameNew = time().'.'.$userId.'.'.$imageActualExt;
                     $imageDestination = __DIR__.'/../../uploads/'.$imageNameNew;
                     move_uploaded_file($imageTmpName, $imageDestination);
 
@@ -47,14 +47,14 @@ if (isset($_GET['post_id'], $_FILES['edit_post_image'])) {
                         die(var_dump($pdo->errorInfo()));
                     }
                     $statement->execute([
-                    ':image' => $imageNameNew,
-                    ':user_id' => $userId,
-                    ':post_id' => $postId,
+                        ':image'   => $imageNameNew,
+                        ':user_id' => $userId,
+                        ':post_id' => $postId,
                     ]);
 
                     // Removes the previous image from the uploads folder
                     if ($currentPostImage['image'] !== null) {
-                        unlink(__DIR__."/../../uploads/".$currentPostImage['image']);
+                        unlink(__DIR__.'/../../uploads/'.$currentPostImage['image']);
                     }
                     $_SESSION['success'] = 'Your post was successfully updated!';
                 } else {
@@ -84,7 +84,7 @@ if (isset($_GET['post_id'], $_POST['edit_post_content'])) {
         ':post_id' => $postId,
         ':user_id' => $userId,
         ':content' => $contet,
-        ]);
+    ]);
     $_SESSION['success'] = 'Your post was successfully updated!';
 }
 redirect('/../../edit-post.php?post_id='.$postId);

@@ -22,7 +22,7 @@ if (isset($_GET['post_id'], $_POST['password'])) {
 
         // Removes the image from the uploads folder
         $currentPostImage = getImageNameById($userId, $postId, $pdo);
-        unlink(__DIR__."/../../uploads/".$currentPostImage['image']);
+        unlink(__DIR__.'/../../uploads/'.$currentPostImage['image']);
 
         // Removes the post from the database
         $statement = $pdo->prepare('DELETE FROM posts WHERE post_id = :post_id AND user_id = :user_id');
@@ -30,8 +30,8 @@ if (isset($_GET['post_id'], $_POST['password'])) {
             die(var_dump($pdo->errorInfo()));
         }
         $statement->execute([
-          ':post_id' => $postId,
-          'user_id' => $userId,
+            ':post_id' => $postId,
+            'user_id'  => $userId,
         ]);
         $_SESSION['success'] = 'Your post was successfully deleted!';
         redirect('/../../feed.php');
